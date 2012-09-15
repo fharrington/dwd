@@ -1,0 +1,52 @@
+body{
+margin: 0;
+padding: 0;
+background-image: url('image/diag.png');
+}
+
+h1,h2,h3,h4 {
+	margin: 0;
+	padding: 0;
+}
+
+.head {
+	height: 60px;
+	background-image: url('image/head.jpg');
+	font-family: 'Times New Roman', sans-serif;
+	font-size: 60px;
+	color: rgb(256, 246, 246);
+}
+
+#wrap{
+	width: 100%;
+	float: left;
+	overflow: visible;
+}
+
+#pagewrap {
+	margin: 20px 20px;
+	float: left;
+	width: 400px;
+	}
+
+.bodytext {
+	float: left;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+}
+
+.text {
+	float: right;
+}
+
+.h2edit {
+	float: left;
+	padding: 0px 15px 0px 0px;
+	margin: 0 0 0 0;
+	font-size: 40px;
+	font-style: bold;
+	font-family: 'century gothic', sans-serif;
+	opacity: 0.3;
+	color: red;
+	}
+
