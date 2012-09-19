@@ -9,14 +9,24 @@ h1,h2,h3,h4 {
 	padding: 0;
 }
 
-.head {
+#head {
 	height: 55px;
 	background-image: url('image/head.jpg');
 	font-family: 'Times New Roman', sans-serif;
-	font-size: 60px;
+	font-size: 40px;
 	text-align: bottom;
 	color: rgb(256, 246, 246);
 }
+
+.headtext {
+	padding: 19px 0 0 10px;
+	height: 55px;
+	font-family: 'Times New Roman', sans-serif;
+	font-size: 40px;
+	text-align: bottom;
+	color: rgb(256, 246, 246);
+}
+
 
 #wrap{
 	width: 100%;
