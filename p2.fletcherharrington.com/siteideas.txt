@@ -1,0 +1,13 @@
+check if logged in
+check if following anyone and pull that list, each person in list is link to that page
+check who's online, show whos online
+
+don't allow duplicate users
+
+
+
+users table fields: name, handle, hashedpass, online/offline, following(by id?), followers?, posts, interests (keywords)
+
+could include a find someone to follow based on common intrests (keywords) and people you both follow. like an im feeling lucky feature to find a new person to follow
+
+possibly a "last online" feature
