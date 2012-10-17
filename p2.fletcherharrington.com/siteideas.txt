@@ -11,3 +11,7 @@ users table fields: name, handle, hashedpass, online/offline, following(by id?),
 could include a find someone to follow based on common intrests (keywords) and people you both follow. like an im feeling lucky feature to find a new person to follow
 
 possibly a "last online" feature
+
+___
+
+geolocation based microblogging site with 2/3d cloudview of posts based on current location, anonymous users, display local businesses as adverstisers relevant to location
