@@ -7,7 +7,7 @@ Your local setup and your live setup should both have their own versions of this
 This file should not be tracked in your Git repo.
 -------------------------------------------------------------------------------------------------*/
 
-# We're on the local environment so toggle IN_PRODUCTION off
+# We're on the local environment so toggle IN_PRODUCTION offff
 define('IN_PRODUCTION', FALSE);
 
 # Always display errors on local environment
