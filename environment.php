@@ -25,9 +25,9 @@ if (REMOTE_DB) {
 	define('DB_PASS', '');
 
 } else {
-	define('DB_HOST', ':/Applications/MAMP/tmp/mysql/mysql.sock');
+	define('DB_HOST', 'localhost');
 	define('DB_USER', 'root');
-	define('DB_PASS', 'root');	
+	define('DB_PASS', 'bbs3440');	
 }
 
 # If you want to test parts of your app that behave differently based on the time, you can force the time here.

@@ -46,51 +46,64 @@ class users_controller extends base_controller {
 	public function login() {
 		echo "This is the login page";
 
-	# Setup view
+		# Setup view
 		$this->template->content = View::instance('v_users_login');
 		$this->template->title   = "Login";
 		
-	# Render template
+		# Render template
 		echo $this->template;
 	
 
 	}
 	
 	public function p_login() {
-	
-	# Hash submitted password so we can compare it against one in the db
-	$_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
-	
-	# Search the db for this email and password
-	# Retrieve the token if it's available
-	$q = "SELECT token 
-		FROM users 
-		WHERE email = '".$_POST['email']."' 
-		AND password = '".$_POST['password']."'";
-	
-	$token = DB::instance(DB_NAME)->select_field($q);
-				
-	# If we didn't get a token back, login failed
-	if(!$token) {
-			
-		# Send them back to the login page
-		Router::redirect("/users/login/");
 		
-	# But if we did, login succeeded! 
+		# Hash submitted password so we can compare it against one in the db
+		$_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
+		
+		# Sanitize the user entered data to prevent any funny-business (re: SQL Injection Attacks)
+		//$_POST = DB::instance(DB_NAME)->sanitize($_POST);
+		
+		# Search the db for this email and password
+		# Retrieve the token if it's available
+		$q = "SELECT token 
+			FROM users 
+			WHERE email = '".$_POST['email']."' 
+			AND password = '".$_POST['password']."'";
+		
+		$token = DB::instance(DB_NAME)->select_field($q);
+					
+		# If we didn't get a token back, login failed
+		if(!$token) {
+				
+			# Send them back to the login page
+			Router::redirect("/users/login/");
+			
+		# But if we did, login succeeded! 
 	} else {
 			
 		# Store this token in a cookie
-		@setcookie("token", $new_token, strtotime('+1 year'), '/');
+		setcookie("token", $new_token, time()+3600, '/');
+		
+		if(isset($_COOKIE['token'])) {
 		
 		# Send them to the main page - or whever you want them to go
 		Router::redirect("/");
-					
+		
+		} else {
+		
+		Router::redirect("/users/login/");
+		}		
 	}
 
 }
 	
 	
 	public function profile($user_name = NULL) {
+		
+		$token = DB::instance(DB_NAME)->select_field($q);
+
+		$user_name = $user;
 		
 		if($user_name == NULL) {
 			echo "No user specified";
