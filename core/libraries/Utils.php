@@ -458,8 +458,22 @@ class Utils {
 		}
 		return $return;
 	}
+	
 
+public static function find_username() {
+	if ($_COOKIE != 'NULL') {
+	$token = $_COOKIE["token"];
+	$query = "SELECT first_name "; //only return id/username, not hashed_password for security
+	$query .= "FROM users ";
+	$query .= "WHERE token = '{$token}' ";
+	$result = DB::instance('db_name')->select_field($query);
+	print $result;
+	} else {
+	return;
+	}
+	}
 
-		
+	
+} 
 
-} # eoc
+# eoc

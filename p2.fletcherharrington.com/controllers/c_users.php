@@ -81,9 +81,10 @@ class users_controller extends base_controller {
 			
 		# But if we did, login succeeded! 
 	} else {
-			
+		
+		
 		# Store this token in a cookie
-		setcookie("token", $new_token, time()+3600, '/');
+		setcookie("token", $token, time()+3600, '/');
 		
 		if(isset($_COOKIE['token'])) {
 		
@@ -99,29 +100,27 @@ class users_controller extends base_controller {
 }
 	
 	
-	public function profile($user_name = NULL) {
+public function profile($user_name) {
 		
-		$token = DB::instance(DB_NAME)->select_field($q);
+	# Set up view
+		$this->template->content = View::instance('v_users_profile');
+		$this->template->title   = "Profile";
 
-		$user_name = $user;
-		
-		if($user_name == NULL) {
-			echo "No user specified";
-		}
-		else {
-			$this->template->content = View::instance("v_users_profile"); //set up the view
-			$this->template->title = "profile for" . $user_name; //set the title of the page via controller
-			$this->template->content->user_name = $user_name; //pass $user_name variable to template
-			
-			$client_files = Array("/css/users.css", "/js/users.js"); //create array of client files we want to send
-			
-			$this->template->client_files = Utils::load_client_files($client_files); //send them in proper format
-			
-			echo $this->template; //render the view
-			
-		}
-	}
+	# Load CSS / JS
+		$client_files = Array(
+				"/css/users.css",
+				"/js/users.js",
+	            );
 	
+        $this->template->client_files = Utils::load_client_files($client_files);   
+
+	# Pass information to the view
+		$this->template->content->user_name = $user_name;
+			
+	# Render template
+		echo $this->template;
+			
+}	
 	public function logout() {
 		
 		# Generate and save a new token for next login
