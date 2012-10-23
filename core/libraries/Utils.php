@@ -459,9 +459,9 @@ class Utils {
 		return $return;
 	}
 	
-
+/*
 public static function find_username() {
-	if ($_COOKIE != 'NULL') {
+	if ($_COOKIE['token'] != 'NULL') {
 	$token = $_COOKIE["token"];
 	$query = "SELECT first_name "; //only return id/username, not hashed_password for security
 	$query .= "FROM users ";
@@ -473,7 +473,7 @@ public static function find_username() {
 	}
 	}
 
-	
+*/	
 } 
 
 # eoc
