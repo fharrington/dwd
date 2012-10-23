@@ -131,7 +131,7 @@ public function profile($user_name) {
 		$data = Array("token" => $new_token);
 		
 		# Do the update
-		DB::instance(DB_NAME)->update("users", $data, "WHERE token = '".$token."'");
+		DB::instance(DB_NAME)->update("users", $data, "WHERE token = '".$this->users->token."'");
 		
 		# Delete their token cookie - effectively logging them out
 		setcookie("token", "", strtotime('-1 year'), '/');
