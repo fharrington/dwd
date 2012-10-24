@@ -82,7 +82,7 @@ class users_controller extends base_controller {
 		# But if we did, login succeeded! 
 	} else {
 		
-		
+		header('Location: '. $_SERVER['PHP_SELF']);
 		# Store this token in a cookie
 		setcookie("token", $token, time()+3600, '/');
 		
@@ -93,7 +93,8 @@ class users_controller extends base_controller {
 		
 		} else {
 		
-		Router::redirect("/users/login/");
+		Router::redirect("/users/login");
+		
 		}		
 	}
 
@@ -135,7 +136,14 @@ class users_controller extends base_controller {
 		setcookie("token", "", strtotime('-1 year'), '/');
 		
 		echo "You have been logged out.";
-
+		
+		#setup view
+		$this->template->content = View::instance('v_users_logout');
+		$this->template->title = "Come Back Soon";
+		
+		#rnder view
+		echo $this->template;
+		
 	}
 		
 } # end of the class
