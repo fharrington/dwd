@@ -1,1 +1,0 @@
-<POST method='submit' action='/users/p_signup'>

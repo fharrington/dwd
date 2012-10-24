@@ -1,3 +1,3 @@
-<h1><?php profile($user)?></h1>
+<h1>This is the profile of <?=$user->first_name?></h1>
 
-<a href="users/logout">Logout</a>
+<a href="logout">Logout</a>
