@@ -3,7 +3,7 @@ class users_controller extends base_controller {
 
 	public function __construct() {
 		parent::__construct();
-		echo "users_controller construct called<br><br>";
+		
 	} 
 	
 	public function index() {
@@ -40,6 +40,10 @@ class users_controller extends base_controller {
 		
 		# For now, just confirm they've signed up - we can make this fancier later
 		echo "You're signed up";
+		
+		sleep(2);
+		
+		header('location: /users/login');
 			
 	}	
 	
@@ -82,21 +86,13 @@ class users_controller extends base_controller {
 		# But if we did, login succeeded! 
 	} else {
 		
-		
 		# Store this token in a cookie
 		setcookie("token", $token, time()+3600, '/');
 		
-		if(isset($_COOKIE['token'])) {
-		
 		# Send them to the main page - or whever you want them to go
 		Router::redirect("/");
-		
-		} else {
-		
-		Router::redirect("/users/login/");
-		}		
-	}
 
+	}
 }
 	
 	
