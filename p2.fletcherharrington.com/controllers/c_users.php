@@ -91,7 +91,6 @@ class users_controller extends base_controller {
 		
 		# Send them to the main page - or whever you want them to go
 		Router::redirect("/");
-
 	}
 }
 	
@@ -131,7 +130,14 @@ class users_controller extends base_controller {
 		setcookie("token", "", strtotime('-1 year'), '/');
 		
 		echo "You have been logged out.";
-
+		
+		#setup view
+		$this->template->content = View::instance('v_users_logout');
+		$this->template->title = "Come Back Soon";
+		
+		#rnder view
+		echo $this->template;
+		
 	}
 		
 } # end of the class
