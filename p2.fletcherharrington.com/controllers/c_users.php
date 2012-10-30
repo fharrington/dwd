@@ -139,7 +139,7 @@ class users_controller extends base_controller {
 		
 		#setup view
 		$this->template->content = View::instance('v_users_logout');
-		$this->template->title = "Come Back Soon";
+		$this->template->title = "See ya";
 		
 		#rnder view
 		echo $this->template;
