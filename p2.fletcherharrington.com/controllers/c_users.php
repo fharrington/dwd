@@ -76,29 +76,18 @@ class users_controller extends base_controller {
 		# If we didn't get a token back, login failed
 		if(!$token) {
 				
-			# Send them back to the login page
-			Router::redirect("/users/login/");
-			
-		# But if we did, login succeeded! 
-	} else {
-		
-		header('Location: '. $_SERVER['PHP_SELF']);
-		# Store this token in a cookie
-		setcookie("token", $token, time()+3600, '/');
-		
-		if(isset($_COOKIE['token'])) {
-		
-		# Send them to the main page - or whever you want them to go
-		Router::redirect("/");
+		Router::redirect("/users/login");
 		
 		} else {
 		
-		Router::redirect("/users/login");
+		setcookie("token", $token, time()+3600, '/');
+		
+		Router::redirect("/");
 		
 		}		
 	}
 
-}
+
 	
 	
 	public function profile() {
