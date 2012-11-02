@@ -27,6 +27,10 @@ class index_controller extends base_controller {
 	      		
 		# Render the view
 			echo $this->template;
+			
+		#just render it 
+		$this->template->content = View::instance('v_index_about');
+
 
 	}	
 	
@@ -40,3 +44,5 @@ class index_controller extends base_controller {
 	
 		
 } // end class
+
+
