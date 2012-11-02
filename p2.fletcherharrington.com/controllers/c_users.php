@@ -83,6 +83,8 @@ class users_controller extends base_controller {
 			# Send them back to the login page
 			Router::redirect("/users/login/");
 			
+			echo "that didnt work";
+			
 		# But if we did, login succeeded! 
 	} else {
 		
@@ -115,13 +117,7 @@ class users_controller extends base_controller {
 	}
 
 	public function logout() {
-	
-		if (!$user) {
-			Router::redirect('/users/please_signup');
-		
-		} else {
 			
-		
 		# Generate and save a new token for next login
 		$new_token = sha1(TOKEN_SALT.$this->user->email.Utils::generate_random_string());
 		
@@ -144,8 +140,10 @@ class users_controller extends base_controller {
 		#rnder view
 		echo $this->template;
 		
-		}
 		
 	}
+	
+
+		
 		
 } # end of the class
