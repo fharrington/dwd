@@ -29,6 +29,15 @@ class User {
 		return false;
 
 	}
+	#need a way to display a logout if someone is logged in and actually log them out with it
+	public function see_logout() {
+		if (isset($this->_user)) {
+			$logout = View::instance('make this the view');
+			return $logout;
+		} else {
+		return NULL;
+		}
+	}
 
 		
 	/*-------------------------------------------------------------------------------------------------
@@ -62,7 +71,6 @@ class User {
 				
 		# Done
 		return $this->_user;
-
 	}
 	
 	
@@ -319,6 +327,9 @@ class User {
 	private static function __set_login_cookie($token) {
 		@setcookie("token", $token, strtotime('+1 year'), '/');
 	}
+	
+	/*-------------------------------------------------------------------------------
+	SEE Logout Option ------------- */
 
 
 	
