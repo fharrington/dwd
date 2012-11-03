@@ -18,7 +18,7 @@ class base_controller {
 			$this->userObj = new User();
 			
 		# Authenticate / load user
-			$this->user = $this->userObj->authenticate();		
+			$this->user = $this->userObj->authenticate();	
 
 		# Instantiate User class for loginout view
 			$this->inout = new User();
@@ -32,9 +32,8 @@ class base_controller {
 								
 		# So we can use $user in views			
 			$this->template->set_global('user', $this->user);
-		#variable to show login/logout on views
-			$this->template->set_global('logout', $this->logout);
-	
+		
+		
 
 		#navigation array
 		
@@ -49,23 +48,28 @@ class base_controller {
 			);
 		
 		$navigation = Array(
-			"strea" => '/posts/index/',
-			"posts" => '/posts/',
+			"public stream" => '/index/posts/',
+			"mystream" => '/posts/mystream/',
+			"follow" => '/posts/users/',
 			"add posts" => '/posts/add/',
-			"about" => '/about/'
+			"about" => '/index/about/'
 			);
 		
 		$navigationout = Array(
-			"stream" => '/posts/index/',
-			"about" => '/about/'
+			"users" => '/posts/users/',
+			"public stream" => '/index/posts/',
+			"about" => '/index/about/'
+			);
+			
+		$profilenav = Array(
+			"logout" => '/users/logout/'
 			);
 		
 		$this->template->loggedin = $loggedin;
 		$this->template->loggedout = $loggedout;
 		$this->template->navigation = $navigation;
 		$this->template->navigationout = $navigationout;
-			
-	
+		$this->template->profilenav = $profilenav;
 	}
 	
 } # eoc

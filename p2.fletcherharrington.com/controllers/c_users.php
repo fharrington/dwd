@@ -7,7 +7,6 @@ class users_controller extends base_controller {
 	} 
 	
 	public function index() {
-		echo "Welcome to the users's department";
 	}
 	
 	public function signup() {
@@ -48,7 +47,7 @@ class users_controller extends base_controller {
 	}	
 	
 	public function login() {
-		echo "This is the login page";
+		
 
 		# Setup view
 		$this->template->content = View::instance('v_users_login');
@@ -96,6 +95,15 @@ class users_controller extends base_controller {
 	
 	
 	public function profile() {
+	
+		# Load client files
+		$client_files = Array(
+				"/css/users.css",
+				"/js/users.js",
+	            );
+	
+        $this->template->client_files = Utils::load_client_files($client_files);   
+
 
 		# If user is blank, they're not logged in, show message and don't do anything else
 		if(!$this->user) {
@@ -115,11 +123,6 @@ class users_controller extends base_controller {
 	}
 
 	public function logout() {
-	
-		if (!$user) {
-			Router::redirect('/users/please_signup');
-		
-		} else {
 			
 		
 		# Generate and save a new token for next login
@@ -135,7 +138,7 @@ class users_controller extends base_controller {
 		# Delete their token cookie - effectively logging them out
 		setcookie("token", "", strtotime('-1 year'), '/');
 		
-		echo "You have been logged out.";
+		Router::redirect('/index/');
 		
 		#setup view
 		$this->template->content = View::instance('v_users_logout');
@@ -144,8 +147,7 @@ class users_controller extends base_controller {
 		#rnder view
 		echo $this->template;
 		
-		}
-		
+			
 	}
 		
 } # end of the class

@@ -198,6 +198,7 @@ class Utils {
 	
 		# Setup view
 			$template->content     		= View::instance('v_message');
+			$template->logo				= $logo;
 			$template->title       		= $title;
 			$template->content->message = $message;
 			$template->content->type    = $type;
