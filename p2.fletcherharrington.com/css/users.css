@@ -1,0 +1,106 @@
+html {
+  font-family: century gothic, monotype corsica;
+  color: white;
+  background-color: #003471; }
+
+body {
+  padding: 0;
+  margin: 0; }
+
+li {
+  padding: 0;
+  margin: 0; }
+
+ul {
+  padding: 0;
+  margin: 0; }
+
+h1 {
+  font-family: 24px century gothic, monotype corsica;
+  color: white; }
+
+h2 {
+  font: 18px century gothic, monotype corsica, sans-serif;
+  color: white; }
+
+#wrap {
+  width: 100%;
+  height: 900px; }
+
+#page {
+  padding: 20px;
+  width: 960px;
+  height: 900px;
+  margin: auto;
+  background-image: url("/image/bg.jpg"); }
+
+#header {
+  float: left;
+  width: 100%;
+  height: 110px; }
+
+#logo {
+  float: left;
+  width: 259px;
+  height: 83px; }
+
+#title {
+  float: left;
+  margin: 0 30px 30px 30px;
+  width: 400px;
+  height: 26px; }
+
+#accountfunctions {
+  float: right;
+  height: 20px;
+  width: 150px;
+  padding: 10px;
+  background-color: #0066de;
+  list-style-type: none; }
+  #accountfunctions ul {
+    display: inline;
+    list-style-type: none; }
+  #accountfunctions li {
+    display: inline; }
+  #accountfunctions a {
+    color: white; }
+    #accountfunctions a:hover {
+      color: #EEEEEE; }
+    #accountfunctions a:visited {
+      color: #FFFFFF; }
+
+#mainnav {
+  float: left;
+  padding: 10px;
+  background-color: #0066de;
+  list-style-type: none;
+  clear: both; }
+  #mainnav ul {
+    list-style-type: none; }
+  #mainnav a {
+    color: white;
+    text-decoration: none; }
+    #mainnav a:hover {
+      color: #EEEEEE; }
+    #mainnav a:visited {
+      color: #FFFFFF; }
+
+.active {
+  font-weight: bold; }
+  .active ul {
+    font-weight: bold; }
+    .active ul li {
+      font-weight: bold; }
+      .active ul li a {
+        font-weight: bold; }
+
+#posts {
+  float: left;
+  padding: 20px;
+  margin: 0 30px 30px 30px;
+  width: 400px;
+  background-color: #0066de; }
+
+#postsinside {
+  float: left;
+  clear: both; }
