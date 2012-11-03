@@ -1,3 +1,4 @@
+<div class='content'>
 <form method='POST' action='/posts/p_add'>
 
 	<strong>New Post:</strong><br>
@@ -7,3 +8,4 @@
 	<input type='submit'>
 
 </form>
+</div>

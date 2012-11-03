@@ -24,7 +24,7 @@ class base_controller {
 			$this->inout = new User();
 		
 		# Set view fragment
-			$this->logout = $this->inout->see_logout();
+			//$this->logout = $this->inout->see_logout();
 							
 		# Set up templates
 			$this->template 	  = View::instance('_v_template');
@@ -56,7 +56,6 @@ class base_controller {
 			);
 		
 		$navigationout = Array(
-			"users" => '/posts/users/',
 			"public stream" => '/index/posts/',
 			"about" => '/index/about/'
 			);

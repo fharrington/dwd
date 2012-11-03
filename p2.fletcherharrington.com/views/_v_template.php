@@ -20,27 +20,27 @@
 
 <div id='wrap'>
 <div id='page'>
-<div id='header'>
+	<div id='header'>
 
-	<div id='logo'><img src="/image/logo.png"></img></div>
+		<div id='logo'><a href="/"><img src="/image/logo.png"></a></img></div>
 	
 	
 	
-	<div id='accountfunctions'>
-	<? if(isset($user->user_id) AND strstr($_SERVER['REQUEST_URI'], '/users/profile/')): ?>
-		<? foreach($profilenav as $key => $value): ?>
-		<ul><li><a href='<?=$value?>'><?=$key?></a></li></ul>
-		<? endforeach; ?>
-	<? elseif(isset($user->user_id)): ?>
-		<? foreach($loggedin as $key => $value): ?>
+		<div id='accountfunctions'>
+		<? if(isset($user->user_id) AND strstr($_SERVER['REQUEST_URI'], '/users/profile/')): ?>
+			<? foreach($profilenav as $key => $value): ?>
 			<ul><li><a href='<?=$value?>'><?=$key?></a></li></ul>
-		<? endforeach; ?>
-	<? elseif(!isset($user->user_id)): ?>
-		<? foreach($loggedout as $key => $value): ?>
-			<ul><li><a href='<?=$value?>'><?=$key?></a></li></ul>
-		<? endforeach; ?>
-	<? endif; ?>
-	</div>
+			<? endforeach; ?>
+		<? elseif(isset($user->user_id)): ?>
+			<? foreach($loggedin as $key => $value): ?>
+				<ul><li><a href='<?=$value?>'><?=$key?></a></li></ul>
+			<? endforeach; ?>
+		<? elseif(!isset($user->user_id)): ?>
+			<? foreach($loggedout as $key => $value): ?>
+				<ul><li><a href='<?=$value?>'><?=$key?></a></li></ul>
+			<? endforeach; ?>
+		<? endif; ?>
+		</div>
 	</div>
 	
 	<div id='mainnav'>
@@ -50,16 +50,16 @@
 		<? endforeach; ?>
 	<? elseif(!isset($user->user_id)): ?>
 		<? foreach($navigationout as $key => $value): ?>
-			<ul><li><a class='<? if(strstr($_SERVER['REQUEST_URI'], $value)) { echo active; } ?>' href='<?=$value?>'><?=$key?></a></li></ul>
+			<ul><li><a class='<? if(strstr($_SERVER['REQUEST_URI'], $value)) { echo "active"; } ?>' href='<?=$value?>'><?=$key?></a></li></ul>
 		<? endforeach; ?>
 	<? endif; ?>
 	</div>
 	
-	<div id='title'>
-	<?=$title;?>
-	<?=$content;?>
-	
 
+	<?=$content;?>
+<div class = 'bgpusher'></div>
+	
+<div class='clear'></div>
 </div>
 </div>
 

@@ -28,7 +28,7 @@ class Email {
 					$mail->SMTPAuth   = true; 
 					$mail->SMTPSecure = 'ssl';
 					$mail->Port       = 465; 
-					$mail->Username   = SMTP_USERNAME; 
+					$mail->Username   = fletche1; 
 					$mail->Password   = SMTP_PASSWORD; 						
 			}
 

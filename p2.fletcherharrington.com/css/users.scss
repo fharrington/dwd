@@ -1,16 +1,26 @@
-$maincolor : #003471;
+$maincolor : #03346f;
 $menucolor: #0066de;
 
 html { font-family: century gothic, monotype corsica; color: white; background-color: $maincolor; }
 body { padding: 0; margin: 0; }
 li { padding: 0; margin: 0; }
 ul { padding: 0; margin: 0; }
-h1 { font-family: 24px century gothic, monotype corsica;
+h1 { font: 26px century gothic, monotype corsica, sans-serif;
 	color: white;
+	margin: 0px;
+	padding: 0px;
 	}
-h2 { font: 18px century gothic, monotype corsica, sans-serif;
+	
+h2 { font: 20px century gothic, monotype corsica, sans-serif;
 	color: white;
+	margin: 0px;
+	padding: 0px;
 	}
+
+h3 { font: 20px bold century gothic, monotype corsica, sans-serif;
+color: white;
+	}
+
 	
 #wrap {
 	width: 100%;
@@ -20,11 +30,15 @@ h2 { font: 18px century gothic, monotype corsica, sans-serif;
 #page {
 	padding: 20px;
 	width: 960px;
-	height: 900px;
 	margin: auto;
 	background-image: url('/image/bg.jpg');
 	}
-
+	
+#bgpusher {
+	width: 960px;
+	height: 1000px;
+	}
+	
 #header {
 	float: left;
 	width: 100%;
@@ -35,13 +49,13 @@ h2 { font: 18px century gothic, monotype corsica, sans-serif;
 	float: left;
 	width: 259px;
 	height: 83px;
-}
+	}
 
 #title {
 	float: left;
-	margin: 0 30px 30px 30px;
+	margin: 0 30px 0 30px;
 	width: 400px;
-	height: 26px;
+	height: 50px;
 	}
 
 #accountfunctions{
@@ -55,12 +69,13 @@ h2 { font: 18px century gothic, monotype corsica, sans-serif;
 	li { display: inline; }
 	a {
 	color: white;
-	&:hover { color: #EEEEEE; }
+	&:hover { color: yellow; }
 	&:visited { color: #FFFFFF; }
+	}
 	}
 
 	
-	}
+	
 
 #mainnav {
 	float: left;
@@ -72,11 +87,12 @@ h2 { font: 18px century gothic, monotype corsica, sans-serif;
 	a {
 	  color: white;
 	  text-decoration: none;
-	  &:hover { color: #EEEEEE; }
+	  &:hover { color: yellow; }
 	  &:visited { color: #FFFFFF; }
 	}
-
 	}
+
+	
 	
 .active {
 	font-weight: bold;
@@ -94,10 +110,34 @@ h2 { font: 18px century gothic, monotype corsica, sans-serif;
 	padding: 20px;
 	margin: 0 30px 30px 30px;
 	width: 400px;
+	opacity: 0.5;
 	background-color: $menucolor;
+	ul { 
+		list-style-type: none;
 	}
-	
+	a {
+		text-decoration: none;
+		color: purple;
+		&:visited { color: purple; }
+		&:hover { color: yellow; }
+	}
+	}
+
+.solid{ opacity: 1.0; }
+
 #postsinside {
 	float: left;
 	clear: both;
+	}
+	
+.content {
+	width: 600px;
+	margin: 0 30px 0 150px;
+	}
+	
+.clear {
+	clear: both;
+}
+.bgpusher {
+	height: 865px;
 	}

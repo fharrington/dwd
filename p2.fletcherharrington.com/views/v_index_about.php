@@ -1,5 +1,6 @@
-
+<div class='content'>
 <h1>About Saysomething</h1>
-<br><br>
+
 <p>
-Say something was the brilliant idea of some guys who visited twitter once and decided to build a nearly identical site with less funcitonality.</p>
+Say something was the brilliant idea of some guy who visited twitter once and decided to build a similar site with less funcitonality!... ya well at least it works... mostly :) </p>
+</div>

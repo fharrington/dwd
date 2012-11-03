@@ -9,22 +9,27 @@ class users_controller extends base_controller {
 	public function index() {
 	}
 	
-	public function signup() {
-		echo "This is the signup page";
+	public function signup($error = NULL, $success = NULL) {
 		
 		# Setup view
-			$this->template->content = View::instance('v_users_signup');
-			$this->template->title   = "Signup";
+		$this->template->content = View::instance('v_users_signup');
+		$this->template->title   = "Signup";
+			
+		# Pass data to the view
+		$this->template->content->error = $error;
 			
 		# Render template
-			echo $this->template;
+		echo $this->template;
 	}
 	
 	public function p_signup() {
-			
-		# Dump out the results of POST to see what the form submitted
-		// print_r($_POST);
 		
+		foreach ($_POST as $exists => $value) {
+			if ($value == "") { 
+				Router::redirect("/users/signup/error");
+			}
+		}
+			
 		# Encrypt the password	
 		$_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);	
 		
@@ -33,9 +38,10 @@ class users_controller extends base_controller {
 		$_POST['modified'] = Time::now();
 		$_POST['token']    = sha1(TOKEN_SALT.$_POST['email'].Utils::generate_random_string());
 					
-			
+		
 		# Insert this user into the database
 		$user_id = DB::instance(DB_NAME)->insert("users", $_POST);
+		
 		
 		# For now, just confirm they've signed up - we can make this fancier later
 		echo "You're signed up";
@@ -46,12 +52,14 @@ class users_controller extends base_controller {
 			
 	}	
 	
-	public function login() {
-		
-
+	public function login($error = NULL) {
+	
 		# Setup view
 		$this->template->content = View::instance('v_users_login');
 		$this->template->title   = "Login";
+		
+		# Pass data to the view
+		$this->template->content->error = $error;
 		
 		# Render template
 		echo $this->template;
@@ -60,7 +68,7 @@ class users_controller extends base_controller {
 	}
 	
 	public function p_login() {
-		
+	
 		# Hash submitted password so we can compare it against one in the db
 		$_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
 		
@@ -69,6 +77,7 @@ class users_controller extends base_controller {
 		
 		# Search the db for this email and password
 		# Retrieve the token if it's available
+		
 		$q = "SELECT token 
 			FROM users 
 			WHERE email = '".$_POST['email']."' 
@@ -77,12 +86,10 @@ class users_controller extends base_controller {
 		$token = DB::instance(DB_NAME)->select_field($q);
 					
 		# If we didn't get a token back, login failed
-		if(!$token) {
-				
-			# Send them back to the login page
-			Router::redirect("/users/login/");
-			
-		# But if we did, login succeeded! 
+		if($token == "") {
+		Router::redirect("/users/login/error");
+		
+		#But if we did, login succeeded! 
 	} else {
 		
 		# Store this token in a cookie
@@ -91,8 +98,9 @@ class users_controller extends base_controller {
 		# Send them to the main page - or whever you want them to go
 		Router::redirect("/");
 	}
-}
 	
+	
+}
 	
 	public function profile() {
 	

@@ -1,3 +1,4 @@
+<div class='content'>
 <form method='POST' action='/users/p_login'>
 
 	Email<br>
@@ -10,7 +11,14 @@
 
 	<br><br>
 	
-	<input type='submit' value='submit'>
+	<? if($error): ?>
+		<div class='error'>
+			Login failed. Please double check your email and password.
+		</div>
+		<br>
+	<? endif; ?>
 	
+	<input type='submit' value='submit'>
 
 </form>
+</div>

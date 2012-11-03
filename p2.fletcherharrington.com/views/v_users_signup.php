@@ -1,3 +1,4 @@
+<div class="content">
 <form method='POST' action='/users/p_signup'>
 
 First Name <br>
@@ -16,8 +17,15 @@ Password <br>
 <input type='password' name='password'>
 <br><br>
 
-<input type='submit'>
+<input type='submit' value="Signup!">
 
+	<? if($error): ?>
+		<div class='error'>
+			Signup failed. Please make sure all fields are filled out!
+		</div>
+		<br>
+	<? endif; ?>
 
 
 </form>
+</div>

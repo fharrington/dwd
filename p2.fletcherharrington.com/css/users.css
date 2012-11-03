@@ -1,7 +1,7 @@
 html {
   font-family: century gothic, monotype corsica;
   color: white;
-  background-color: #003471; }
+  background-color: #03346f; }
 
 body {
   padding: 0;
@@ -16,11 +16,19 @@ ul {
   margin: 0; }
 
 h1 {
-  font-family: 24px century gothic, monotype corsica;
-  color: white; }
+  font: 26px century gothic, monotype corsica, sans-serif;
+  color: white;
+  margin: 0px;
+  padding: 0px; }
 
 h2 {
-  font: 18px century gothic, monotype corsica, sans-serif;
+  font: 20px century gothic, monotype corsica, sans-serif;
+  color: white;
+  margin: 0px;
+  padding: 0px; }
+
+h3 {
+  font: 20px bold century gothic, monotype corsica, sans-serif;
   color: white; }
 
 #wrap {
@@ -30,9 +38,12 @@ h2 {
 #page {
   padding: 20px;
   width: 960px;
-  height: 900px;
   margin: auto;
   background-image: url("/image/bg.jpg"); }
+
+#bgpusher {
+  width: 960px;
+  height: 1000px; }
 
 #header {
   float: left;
@@ -46,9 +57,9 @@ h2 {
 
 #title {
   float: left;
-  margin: 0 30px 30px 30px;
+  margin: 0 30px 0 30px;
   width: 400px;
-  height: 26px; }
+  height: 50px; }
 
 #accountfunctions {
   float: right;
@@ -65,7 +76,7 @@ h2 {
   #accountfunctions a {
     color: white; }
     #accountfunctions a:hover {
-      color: #EEEEEE; }
+      color: yellow; }
     #accountfunctions a:visited {
       color: #FFFFFF; }
 
@@ -81,7 +92,7 @@ h2 {
     color: white;
     text-decoration: none; }
     #mainnav a:hover {
-      color: #EEEEEE; }
+      color: yellow; }
     #mainnav a:visited {
       color: #FFFFFF; }
 
@@ -99,8 +110,31 @@ h2 {
   padding: 20px;
   margin: 0 30px 30px 30px;
   width: 400px;
+  opacity: 0.5;
   background-color: #0066de; }
+  #posts ul {
+    list-style-type: none; }
+  #posts a {
+    text-decoration: none;
+    color: purple; }
+    #posts a:visited {
+      color: purple; }
+    #posts a:hover {
+      color: yellow; }
+
+.solid {
+  opacity: 1.0; }
 
 #postsinside {
   float: left;
   clear: both; }
+
+.content {
+  width: 600px;
+  margin: 0 30px 0 150px; }
+
+.clear {
+  clear: both; }
+
+.bgpusher {
+  height: 865px; }

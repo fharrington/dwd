@@ -54,6 +54,9 @@ class index_controller extends base_controller {
 	
 	# Run our query, grabbing all the posts and joining in the users	
 	$posts = DB::instance(DB_NAME)->select_rows($q);
+	
+	#reverse order (newest first)
+	$posts = array_reverse($posts);
 
 	# Pass data to the view
 	$this->template->content->posts = $posts;
