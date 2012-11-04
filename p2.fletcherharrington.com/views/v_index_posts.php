@@ -3,10 +3,8 @@
 <div id='postsinside'>
 <? foreach($posts as $key => $post): ?>
 	
-	<span class='solid'>
 	<h3><?=$post['first_name']?> <?=$post['last_name']?> posted:</h3>
 	<?=$post['content']?>
-	</span>
 	<br>
 	
 <? endforeach; ?>
