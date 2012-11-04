@@ -54,6 +54,12 @@ h3 {
   float: left;
   width: 259px;
   height: 83px; }
+  #logo a {
+    color: #03346f; }
+    #logo a:hover {
+      color: #03346f; }
+    #logo a:visited {
+      color: #03346f; }
 
 #title {
   float: left;

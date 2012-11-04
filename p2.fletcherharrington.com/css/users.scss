@@ -49,6 +49,12 @@ color: white;
 	float: left;
 	width: 259px;
 	height: 83px;
+	a {
+		color: $maincolor;
+		&:hover { color: $maincolor; }
+		&:visited { color: $maincolor; }
+	}
+
 	}
 
 #title {
