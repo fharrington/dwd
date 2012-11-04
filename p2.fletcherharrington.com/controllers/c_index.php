@@ -43,29 +43,38 @@ class index_controller extends base_controller {
 	
 	public function posts() {
 	
-	# Set up view
-	$this->template->content = View::instance('v_index_posts');
-	$this->template->title   = "Posts";
-	
-	# Build our query
-	$q = "SELECT * 
-		FROM posts
-		JOIN users USING (user_id)";
-	
-	# Run our query, grabbing all the posts and joining in the users	
-	$posts = DB::instance(DB_NAME)->select_rows($q);
-	
-	#reverse order (newest first)
-	$posts = array_reverse($posts);
+		# Set up view
+		$this->template->content = View::instance('v_index_posts');
+		$this->template->title   = "Posts";
+		
+		# Build our query
+		$q = "SELECT * 
+			FROM posts
+			JOIN users USING (user_id)";
+		
+		# Run our query, grabbing all the posts and joining in the users	
+		$posts = DB::instance(DB_NAME)->select_rows($q);
+		
+		#reverse order (newest first)
+		$posts = array_reverse($posts);
 
-	# Pass data to the view
-	$this->template->content->posts = $posts;
-	
-	# Render view
-	echo $this->template;
+		# Pass data to the view
+		$this->template->content->posts = $posts;
+		
+		# Render view
+		echo $this->template;
 	
 	}
 		
+	public function project3() {
+		
+		# Set up view
+		$this->template->content = View::instance('v_index_project3');
+		$this->template->title   = "Project3";
+
+		echo $this->template;
+	}
+	
 } // end class
 
 
