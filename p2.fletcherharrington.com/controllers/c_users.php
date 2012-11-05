@@ -41,10 +41,38 @@ class users_controller extends base_controller {
 		
 		# Insert this user into the database
 		$user_id = DB::instance(DB_NAME)->insert("users", $_POST);
-				
-		sleep(2);
 		
-		header('location: /users/login');
+		sleep(2);
+				
+		# Sanitize the user entered data to prevent any funny-business (re: SQL Injection Attacks)
+		//$_POST = DB::instance(DB_NAME)->sanitize($_POST);
+		
+		# Search the db for this email and password
+		# Retrieve the token if it's available
+		
+		$q = "SELECT token 
+			FROM users 
+			WHERE email = '".$_POST['email']."' 
+			AND password = '".$_POST['password']."'";
+		
+		$token = DB::instance(DB_NAME)->select_field($q);
+					
+		# If we didn't get a token back, login failed
+		if($token == "") {
+		Router::redirect("/users/login/error");
+		
+		#But if we did, login succeeded!
+		
+		} else {
+			
+			# Store this token in a cookie
+			setcookie("token", $token, time()+3600, '/');
+			
+			# Send them to the main page - or whever you want them to go
+			Router::redirect("/users/profile/");
+		}
+		
+		//header('location: /users/login');
 			
 	}	
 	
@@ -92,7 +120,7 @@ class users_controller extends base_controller {
 		setcookie("token", $token, time()+3600, '/');
 		
 		# Send them to the main page - or whever you want them to go
-		Router::redirect("/");
+		Router::redirect("/users/profile/");
 	}
 }
 	
