@@ -5,6 +5,7 @@ Welcome to Saysomething <? echo " ". $user->first_name . " "?> you can use the m
 <br>
 <div class='error'><? if($streamerror) { echo "Please follow someone to use your stream!"; } ?></div>
 <div class='error'><? if ($mypostserror) { echo "Add some posts to see them in your profile!"; }?></div>
+<? if (!$noposts):?>
 <div id='titleinside'>My Posts</div>
 <div id='myposts'>
 <div class='postsinside'>
@@ -18,3 +19,4 @@ Welcome to Saysomething <? echo " ". $user->first_name . " "?> you can use the m
 </div>
 </div>
 </div>
+<? endif; ?>

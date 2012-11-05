@@ -124,7 +124,7 @@ class users_controller extends base_controller {
 	}
 }
 	
-	public function profile($streamerror = NULL, $mypostserror = NULL) {
+	public function profile($streamerror = NULL, $mypostserror = NULL, $noposts = NULL) {
 	
 		# Load client files
 		$client_files = Array(
@@ -155,6 +155,8 @@ class users_controller extends base_controller {
 		
 		#reverse order (newest first)
 		$myposts = array_reverse($myposts);
+		
+		if (!$myposts) { $noposts = "1"; }
 
 		# Setup view
 		$this->template->content = View::instance('v_users_profile');
@@ -162,6 +164,7 @@ class users_controller extends base_controller {
 		$this->template->content->streamerror = $streamerror;
 		$this->template->content->myposts = $myposts;
 		$this->template->content->mypostserror = $mypostserror;
+		$this->template->content->noposts = $noposts;
 			
 		# Render template
 		echo $this->template;
