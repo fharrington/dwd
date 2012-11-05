@@ -12,7 +12,7 @@ class posts_controller extends base_controller {
 	}
 	
 	
-	public function mystream() {
+	public function mystream($streamerror = NULL) {
 	
 	# Set up view
 	$this->template->content = View::instance('v_posts_mystream');
@@ -21,10 +21,15 @@ class posts_controller extends base_controller {
 	#Posts of users this user is following
 	$q = "SELECT *
 		FROM users_users
-		WHERE user_id = ".$this->user->user_id;
+		WHERE user_id = " .$this->user->user_id;
 	
 	#Execute our query, storing the results in a variable $connections
 	$connections = DB::instance(DB_NAME)->select_rows($q);
+	
+	if ($connections == NULL) {
+	$streamerror = 1;
+	Router::redirect('/users/profile/streamerror');
+	} else {
 	
 	#In order to query for the posts we need, we're going to need a string of user id's, separated by commas
 	#To create this, loop through our connections array
@@ -40,7 +45,7 @@ class posts_controller extends base_controller {
 	$q = "SELECT * 
 		FROM posts
 		JOIN users USING (user_id)
-		WHERE posts.user_id IN(".$connections_string.")"; 
+		WHERE posts.user_id IN (".$connections_string.")"; 
 	
 	# Run our query, grabbing all the posts and joining in the users	
 	$posts = DB::instance(DB_NAME)->select_rows($q);
@@ -48,9 +53,14 @@ class posts_controller extends base_controller {
 	#reverse order (newest first)
 	$posts = array_reverse($posts);
 	
-	# Pass data to the view
-	$this->template->content->posts = $posts;
+	}
 	
+	# Pass data to the view
+	
+	$this->template->content->streamerror = $streamerror;
+	
+	$this->template->content->posts = $posts;
+		
 	# Render view
 	echo $this->template;
 	
@@ -63,15 +73,18 @@ class posts_controller extends base_controller {
 	$this->template->content = View::instance("v_posts_users");
 	$this->template->title = "Users";
 	
-	#Build our query to get all the users
+	$this_userid = $this->user->user_id;
+	
+	#Build our query to get all the users except logged in
 	$q = "SELECT *
 		FROM users";
+		//WHERE user_id <> " .$this_userid;
 	
 	#Execute the query to get all teh users. Store result array in var $users
 	
 	$users = DB::instance(DB_NAME)->select_rows($q);
 	
-	#Build query to determine what connectings users already has (following who)
+	#Build query to determine what connections user already has (following who)
 	$q = "SELECT *
 		FROM users_users
 		WHERE user_id = ".$this->user->user_id;
@@ -88,7 +101,6 @@ class posts_controller extends base_controller {
 	
 	#Render the view
 	echo $this->template;
-
 	}
 
 	

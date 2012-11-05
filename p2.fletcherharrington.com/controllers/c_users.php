@@ -41,11 +41,7 @@ class users_controller extends base_controller {
 		
 		# Insert this user into the database
 		$user_id = DB::instance(DB_NAME)->insert("users", $_POST);
-		
-		
-		# For now, just confirm they've signed up - we can make this fancier later
-		echo "You're signed up";
-		
+				
 		sleep(2);
 		
 		header('location: /users/login');
@@ -63,8 +59,7 @@ class users_controller extends base_controller {
 		
 		# Render template
 		echo $this->template;
-	
-
+		
 	}
 	
 	public function p_login() {
@@ -90,6 +85,7 @@ class users_controller extends base_controller {
 		Router::redirect("/users/login/error");
 		
 		#But if we did, login succeeded! 
+		
 	} else {
 		
 		# Store this token in a cookie
@@ -98,11 +94,9 @@ class users_controller extends base_controller {
 		# Send them to the main page - or whever you want them to go
 		Router::redirect("/");
 	}
-	
-	
 }
 	
-	public function profile() {
+	public function profile($streamerror = NULL) {
 	
 		# Load client files
 		$client_files = Array(
@@ -110,7 +104,7 @@ class users_controller extends base_controller {
 				"/js/users.js",
 	            );
 	
-        $this->template->client_files = Utils::load_client_files($client_files);   
+        $this->template->client_files = Utils::load_client_files($client_files);
 
 
 		# If user is blank, they're not logged in, show message and don't do anything else
@@ -125,6 +119,7 @@ class users_controller extends base_controller {
 		# Setup view
 		$this->template->content = View::instance('v_users_profile');
 		$this->template->title   = "Profile of".$this->user->first_name;
+		$this->template->content->streamerror = $streamerror;
 			
 		# Render template
 		echo $this->template;
