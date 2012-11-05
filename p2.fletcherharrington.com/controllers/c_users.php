@@ -45,7 +45,7 @@ class users_controller extends base_controller {
 		sleep(2);
 				
 		# Sanitize the user entered data to prevent any funny-business (re: SQL Injection Attacks)
-		//$_POST = DB::instance(DB_NAME)->sanitize($_POST);
+		$_POST = DB::instance(DB_NAME)->sanitize($_POST);
 		
 		# Search the db for this email and password
 		# Retrieve the token if it's available
@@ -124,7 +124,7 @@ class users_controller extends base_controller {
 	}
 }
 	
-	public function profile($streamerror = NULL) {
+	public function profile($streamerror = NULL, $mypostserror = NULL) {
 	
 		# Load client files
 		$client_files = Array(
@@ -144,15 +144,30 @@ class users_controller extends base_controller {
 			return false;
 		}
 		
+		#Posts of users this user is following
+		$q = "SELECT *
+			FROM posts
+			JOIN users USING (user_id)
+			WHERE user_id = " .$this->user->user_id;
+		
+		# Run our query, grabbing all the posts and joining in the users	
+		$myposts = DB::instance(DB_NAME)->select_rows($q);
+		
+		#reverse order (newest first)
+		$myposts = array_reverse($myposts);
+
 		# Setup view
 		$this->template->content = View::instance('v_users_profile');
 		$this->template->title   = "Profile of".$this->user->first_name;
 		$this->template->content->streamerror = $streamerror;
+		$this->template->content->myposts = $myposts;
+		$this->template->content->mypostserror = $mypostserror;
 			
 		# Render template
 		echo $this->template;
-	}
-
+}
+		
+	
 	public function logout() {
 			
 		
@@ -180,5 +195,5 @@ class users_controller extends base_controller {
 		
 			
 	}
-		
+	
 } # end of the class

@@ -1,5 +1,6 @@
 <div id="title"><h2>Posts from people i'm following</h2></div>
 <div id="posts">
+<div class="postsinside">
 <? foreach($posts as $key => $post): ?>
 	
 	
@@ -9,4 +10,5 @@
 	
 	
 <? endforeach; ?>
+</div>
 </div>
