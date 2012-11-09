@@ -124,12 +124,15 @@ class posts_controller extends base_controller {
 		$_POST['created']  = Time::now();
 		$_POST['modified'] = Time::now();
 		
-		# Insert
+		If (!empty($_POST['content'])) {
+		# Insert and redirect
 		# Note we didn't have to sanitize any of the $_POST data because we're using the insert method which does it for us
 		DB::instance(DB_NAME)->insert('posts', $_POST);
-		
-		# Send back to profile
 		Router::redirect('/users/profile/');
+		}else{
+		# Send back to profile (code in an error msg for future)
+		Router::redirect('/users/profile/');
+		}
 	
 	}
 	
@@ -144,10 +147,10 @@ class posts_controller extends base_controller {
 		
 		#Do the insert
 		DB::instance(DB_NAME)->insert('users_users',$data);
-		
+	
 		#Send them back
 		Router::redirect("/posts/users");
-	
+		
 	}
 	
 	public function unfollow($user_id_followed) {
