@@ -38,7 +38,8 @@ h3 {
 #page {
   padding: 20px;
   width: 960px;
-  margin: auto; }
+  margin: auto;
+  float: left; }
 
 .content {
   width: 600px;
@@ -56,55 +57,102 @@ h3 {
 .bgpusher {
   height: 865px; }
 
+#tile-drop-area {
+  float: left;
+  width: 460px;
+  height: 90px;
+  margin: 10px;
+  border: 1px solid white; }
+
+.tile-drop {
+  float: left;
+  height: 80px;
+  width: 80px;
+  margin: 5px;
+  border: 1px solid grey; }
+
+.tile-drop2 {
+  float: left;
+  height: 80px;
+  width: 80px;
+  margin: 5px;
+  border: 1px solid grey; }
+
+.tile-drop3 {
+  float: left;
+  height: 80px;
+  width: 80px;
+  margin: 5px;
+  border: 1px solid grey; }
+
+.tile-drop4 {
+  float: left;
+  height: 80px;
+  width: 80px;
+  margin: 5px;
+  border: 1px solid grey; }
+
+.tile-drop5 {
+  float: left;
+  height: 80px;
+  width: 80px;
+  margin: 5px;
+  border: 1px solid grey; }
+
+#tile-area {
+  float: left;
+  width: 460px;
+  height: 90px;
+  margin: 10px;
+  border: 1px solid white; }
+
 .tile-red {
   float: left;
   height: 80px;
   width: 80px;
-  margin: 10px;
+  margin: 5px;
+  border: 1px solid grey;
   background-color: #DE4D3F; }
-  .tile-red p {
-    width: 60px; }
 
 .tile-orange {
   background-color: orange;
   float: left;
   height: 80px;
   width: 80px;
-  margin: 10px; }
-  .tile-orange p {
-    width: 60px; }
+  margin: 5px;
+  border: 1px solid grey; }
 
 .tile-yellow {
   background-color: yellow;
   float: left;
   height: 80px;
   width: 80px;
-  margin: 10px; }
-  .tile-yellow p {
-    width: 60px; }
+  margin: 5px;
+  border: 1px solid grey; }
 
 .tile-brown {
   background-color: brown;
   float: left;
   height: 80px;
   width: 80px;
-  margin: 10px; }
-  .tile-brown p {
-    width: 60px; }
+  margin: 5px;
+  border: 1px solid grey; }
 
 .tile-blue {
   background-color: blue;
   float: left;
   height: 80px;
   width: 80px;
-  margin: 10px; }
-  .tile-blue p {
-    width: 60px; }
+  margin: 5px;
+  border: 1px solid grey; }
 
-.test {
-  width: 40px;
-  height: 40px;
-  display: block; }
+#draggableHelper {
+  float: left;
+  height: 80px;
+  width: 80px;
+  margin: 5px;
+  border: 1px solid grey;
+  background-color: blue; }
 
 .full-circle {
   width: 100px;

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title><?=$title?></title>
 
 
-
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/js/metalmixup.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/users.css">
 
@@ -45,14 +46,26 @@
 	</audio>
 	
 	<h1>Metal Mix Up</h1>
-		<div class = "content">
+	<div class = "content">
+		<div id = "tile-drop-area">
+			<div class = "tile-drop"></div>
+			<div class = "tile-drop"></div>
+			<div class = "tile-drop"></div>
+			<div class = "tile-drop"></div>
+			<div class = "tile-drop"></div>		
+		</div>
+		
+		<div id = "tile-area">
 			<div class = "tile-red"></div>
 			<div class = "tile-orange"></div>
 			<div class = "tile-brown"></div>
 			<div class = "tile-yellow"></div>
 			<div class = "tile-blue"></div>
+		</div>
 	</div>
 	
 </div>
+</div>
+
 </body>
 </html>

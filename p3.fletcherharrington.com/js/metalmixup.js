@@ -13,7 +13,23 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	$(".tile-orange").click(function() {
 	audio2.play();
 	});
-
-
+	
+	$(".tile-red").draggable();
+	
+	$(".tile-orange").draggable();
+	$(".tile-brown").draggable();	
+	$(".tile-yellow").draggable();	
+	$(".tile-blue").draggable( {
+		snap: '.tile-drop',
+		containment: '#content',
+		helper: myHelper
+		
+	});
+	
+	function myHelper( event ) {
+	return '<div id="draggableHelper">I am a helper - drag me!</div>';
+}
+	
+	
 }); // end doc ready; do not delete this!
 
