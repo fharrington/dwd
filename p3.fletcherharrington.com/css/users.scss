@@ -32,7 +32,11 @@ color: white;
 	width: 960px;
 	margin: auto;
 }
-	
+
+#title {
+
+}
+
 .content {
 	width: 600px;
 	margin: 0 30px 0 150px;
@@ -46,10 +50,51 @@ color: white;
 .clear {
 	clear: both;
 }
+
 .bgpusher {
 	height: 865px;
 	}
 
+@mixin tile {
+	float: left;
+	height: 80px;
+	width: 80px;
+	margin: 10px;
+	p { width: 60px; }
+	}
+
+#sound1 {
+	
+}	
+
+.tile-red {
+	@include tile;
+	background-color: #DE4D3F;
+	}
+
+.tile-orange {
+	background-color: orange;
+	@include tile;
+	}
+	
+.tile-yellow {
+	background-color: yellow;
+	@include tile;
+	}
+	
+.tile-brown {
+	background-color: brown;
+	@include tile;
+	}
+
+.tile-blue {
+	background-color: blue;
+	@include tile;
+	}
+	
+.test { width: 40px; height: 40px; display: block; }
+	
+	
 .full-circle {
 	width: 100px;
 	height: 100px;
@@ -61,3 +106,4 @@ color: white;
     transform: scale(0.9);
     opacity: 0.7;
 }
+
