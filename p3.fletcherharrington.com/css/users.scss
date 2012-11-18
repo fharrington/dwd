@@ -116,6 +116,11 @@ color: white;
 	}
 		
 	
+.tile-sound {
+	@include tile;
+	background-color: #DE4D3F;
+	}
+	
 .tile-red {
 	@include tile;
 	background-color: #DE4D3F;

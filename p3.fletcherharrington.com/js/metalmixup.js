@@ -1,5 +1,21 @@
 $(document).ready(function() { // start doc ready; do not delete this!
-
+	
+	var SoundTiles = {
+		
+		playbutton: 0,
+		var TileArray[],
+		tile_count: 5;
+		
+		create_tiles function(tile_count) {
+		
+			for(var i = 0, i > tile_count, i ++) {
+				
+				tilestring = "<div class = "tile-sound">"
+				
+		
+		}
+	
+	}
 
 
 	var audio = $("audio[title][title=sound1]")[0];
