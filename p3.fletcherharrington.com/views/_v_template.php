@@ -9,10 +9,22 @@
 <script type="text/javascript" src="/js/metalmixup.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/users.css">
 
+<script type="text/javascript">
+
+Aud1.set_tile;
+
+</script>
+
+<!--<script type="text/javascript">
+$(document).ready(function() { // start doc ready; do not delete this!
 
 
+tile_test.aud1.set_tile;
 
 
+}); // end doc ready; do not delete this!
+</script>
+-->
 
 </head>
 <body>
