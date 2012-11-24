@@ -9,11 +9,6 @@
 <script type="text/javascript" src="/js/metalmixup.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/users.css">
 
-<script type="text/javascript">
-
-Aud1.set_tile;
-
-</script>
 
 <!--<script type="text/javascript">
 $(document).ready(function() { // start doc ready; do not delete this!
@@ -36,8 +31,8 @@ tile_test.aud1.set_tile;
 	?>
 
 	
-	<? $audiofiles = Array("c1.wav", "c2.wav"); ?>
-	<? $audiotitles = Array("sound1", "sound2"); ?>
+	<? $audiofiles = Array("sound1", "sound2", "sound3"); ?>
+
 
 	
 	<? /*foreach ($audiofiles as $file)
@@ -47,13 +42,18 @@ tile_test.aud1.set_tile;
 	</audio>" */
 	?>
 	
-	<audio preload title='sound1'>
-	<source src="audio/c1.wav"></source>
-	Browser!supportsound
+	<audio preload='auto' title='sound1'>
+	<source src="audio/sound1.wav"></source>
 	</audio>	
+	Browser!supportsound
 	
-	<audio preload title='sound2'>
-	<source src="audio/c2.wav"></source>
+	<audio preload='auto' title='sound2'>
+	<source src="audio/sound2.wav"></source>
+	Browser!supportsound
+	</audio>
+	
+	<audio preload='auto' title='sound3'>
+	<source src="audio/sound3.wav"></source>
 	Browser!supportsound
 	</audio>
 	
