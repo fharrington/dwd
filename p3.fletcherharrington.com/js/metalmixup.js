@@ -5,14 +5,9 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	var length = audio_title_array.length;
 	
 	
-	
-	//function playSound () {
-	//		aud.play();
-	//}
-	
-	
+
 	//make them play sequentially
-		$(".tile-blue").click(function() {
+		$(".blue").click(function() {
 		for (var i=0; i <  length; i++)	{	
 				
 				
@@ -24,8 +19,6 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	});
 	
 	
-	//console.log();
-	
 	
 	var audio1 = $("audio[title][title=sound1]")[0];
 	var audio2 = $("audio[title][title=sound2]")[0];
@@ -33,18 +26,22 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	
 	//single tile player
 	
-	$(".tile-red").click(function() {
+	$(".red").click(function() {
 		audio1.play();		
 	});
 	
-	$(".tile-orange").click(function() {
+	$(".orange").click(function() {
 	audio2.play();
 	});
 	
 	
 	//multi-tile player
 	
-	//$("audio[title=sound1]").on("ended",function(){ $("audio[title=sound2]")[0].play(); });
+	function playNext () {
+		console.log("testing");
+		}
+	
+	$("audio[title=sound1]").on("ended", playNext);
 	
 	
 
@@ -52,12 +49,12 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	
 
 	
-	$(".tile-red").draggable();
+	$(".tile, .red").draggable();
 	
-	$(".tile-orange").draggable();
-	$(".tile-brown").draggable();	
-	$(".tile-yellow").draggable();	
-	$(".tile-blue").draggable( {
+	$(".tile, .orange").draggable();
+	$(".tile, .brown").draggable();	
+	$(".tile, .yellow").draggable();	
+	$(".tile").draggable( {
 		snap: '.tile-drop',
 		containment: '#content',
 		helper: myHelper

@@ -62,10 +62,8 @@ color: white;
 	
 }
 
-#tile-drop-area {
-	float: left;
-	width: 460px;
-	height: 90px;
+#player {
+	float: left;	
 	margin: 10px;
 	border: 1px solid white;
 	}
@@ -101,8 +99,6 @@ color: white;
 
 #tile-area {
 	float: left;
-	width: 460px;
-	height: 90px;
 	margin: 10px;
 	border: 1px solid white;
 	}
@@ -114,36 +110,34 @@ color: white;
 	margin: 5px;
 	border: 1px solid grey;
 	}
-		
 	
 .tile-sound {
 	@include tile;
 	background-color: #DE4D3F;
 	}
 	
-.tile-red {
+.tile {
 	@include tile;
-	background-color: #DE4D3F;
 	}
 
-.tile-orange {
+.red {
+	background-color: red;
+	}	
+	
+.orange {
 	background-color: orange;
-	@include tile;
 	}
 	
-.tile-yellow {
+.yellow {
 	background-color: yellow;
-	@include tile;
 	}
 	
-.tile-brown {
+.brown {
 	background-color: brown;
-	@include tile;
 	}
 
-.tile-blue {
+.blue {
 	background-color: blue;
-	@include tile;
 	}
 	
 #draggableHelper {
