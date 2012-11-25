@@ -44,8 +44,9 @@ tile_test.aud1.set_tile;
 	
 	<audio preload='auto' title='sound1'>
 	<source src="audio/sound1.wav"></source>
-	</audio>	
 	Browser!supportsound
+	</audio>	
+	
 	
 	<audio preload='auto' title='sound2'>
 	<source src="audio/sound2.wav"></source>
