@@ -62,6 +62,10 @@ color: white;
 	
 }
 
+.hovered {
+	background-color: #DDDDDD;
+}
+
 #player {
 	float: left;	
 	margin: 10px;
@@ -100,6 +104,7 @@ color: white;
 #tile-area {
 	float: left;
 	margin: 10px;
+	width: 462px;
 	border: 1px solid white;
 	}
 	

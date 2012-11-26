@@ -57,6 +57,9 @@ h3 {
 .bgpusher {
   height: 865px; }
 
+.hovered {
+  background-color: #DDDDDD; }
+
 #player {
   float: left;
   margin: 10px;
@@ -100,6 +103,7 @@ h3 {
 #tile-area {
   float: left;
   margin: 10px;
+  width: 462px;
   border: 1px solid white; }
 
 .tile-sound {

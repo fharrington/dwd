@@ -60,22 +60,10 @@ tile_test.aud1.set_tile;
 	
 	<h1>Metal Mix Up</h1>
 	<div class = "content">
-		<div id = "player">
-			<div class = "tile-drop"></div>
-			<div class = "tile-drop"></div>
-			<div class = "tile-drop"></div>
-			<div class = "tile-drop"></div>
-			<div class = "tile-drop"></div>		
-		</div>
+
+	<div id = "player"></div>
 		
-		<div id = "tile-area">
-			<div class = "tile red"></div>
-			<div class = "tile orange"></div>
-			<div class = "tile brown"></div>
-			<div class = "tile yellow"></div>
-			<div class = "tile blue"></div>
-		</div>
-	</div>
+	<div id = "tile-area"></div>
 	
 </div>
 </div>
