@@ -20,7 +20,6 @@ function init() {
       cursor: 'move',
       revert: true
     } );
-	
   }
   
   //style the #tile[i] divs
@@ -29,6 +28,7 @@ function init() {
 	$('#tile' + [i]).css('width', "80px").css('height', "80px").css('border', "1px solid").css('margin', "5px").css('float', "left");
 	}
  
+
  
  
   // Create the tile slots
@@ -48,12 +48,23 @@ function init() {
 	}
 
 function controlTileDrop( event, ui ) {
-
+  _currSlot = $(this).data('number');
+  _tileNumber = ui.draggable.data( 'number' ); 
   ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
   ui.draggable.draggable( 'option', 'revert', false );
-  console.log(this);
   
   }
+  
+  function test(_tileNumber, _currSlot) {
+	
+	_playOrder = Array('','','','','');
+	_playOrder[_currSlot] = _tileNumber;
+	console.log(_playOrder);
+	
+}
+ 
+  
+  
 }
 
 

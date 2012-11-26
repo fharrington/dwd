@@ -103,8 +103,7 @@ h3 {
 #tile-area {
   float: left;
   margin: 10px;
-  width: 462px;
-  border: 1px solid white; }
+  width: 462px; }
 
 .tile-sound {
   float: left;
