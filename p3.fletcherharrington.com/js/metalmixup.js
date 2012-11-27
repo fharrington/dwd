@@ -56,13 +56,34 @@ function controlTileDrop( event, ui ) {
   }
   
   function test(_tileNumber, _currSlot) {
-	
+	$
 	_playOrder = Array('','','','','');
 	_playOrder[_currSlot] = _tileNumber;
 	console.log(_playOrder);
 	
-}
- 
+	}
+  
+  
+  	var audio_titles = Array('sound1', 'sound2', 'sound3', 'sound4', 'sound5', 'sound6');
+
+
+	
+	
+
+	console.log
+	
+	//single tile player
+	
+	for(i=0; i<=5; i++){
+		var playString1 = '$(\"audio[title][title=sound';
+		var playString2 = ']\")[0];';
+		$("#tile" + [i]).click(function() {
+			console.log(audio_titles[i]);
+			$(playString1 + i + playString2).play;
+
+		});
+	}
+  
   
   
 }
