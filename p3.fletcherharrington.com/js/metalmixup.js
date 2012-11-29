@@ -8,7 +8,7 @@ $(document).ready(function() { // start doc ready; do not delete this!
   numbers.sort( function() { return Math.random() - .5 } );
  
   for ( var i=0; i<10; i++ ) {
-    $('<div><audio preload=\'auto\'></audio>' + numbers[i] + '</div>').data( 'number', numbers[i] ).attr( 'id', 'tile'+numbers[i] ).attr('class', 'acceptable').appendTo( '#tile-area' ).draggable( {
+    $('<div>' + (i+1) + '</div>').data( 'number', numbers[i] ).attr( 'id', 'tile'+numbers[i] ).attr('class', 'acceptable').appendTo( '#tile-area' ).draggable( {
       containment: '#content',
       stack: '#tile-area',
       cursor: 'move',
@@ -22,18 +22,18 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	$('#tile' + [i]).css('width', "80px").css('height', "80px").css('border', "1px solid").css('margin', "5px").css('float', "left");
 	}
  
-
- 
  
   // Create the tile slots
   var words = [ 'red', 'green', 'blue', 'brown', 'yellow', 'purple', 'orange', 'pink', 'gray', 'white' ];
   for ( var i=1; i<=5; i++ ) {
-    $('<div><audio preload=\'auto\'></audio></div>').attr('id', 'tileDrop'+[i]).data( 'number', i ).appendTo( '#player' ).droppable( {
+    $('<div>?</div>').attr('id', 'tileDrop'+[i]).data( 'number', i ).appendTo( '#player' ).droppable( {
       accept: ".acceptable",
       hoverClass: 'hovered',
       drop: controlTileDrop
     } );
   }
+ 
+ 
  
   //style the #tileDrop[i] divs
   
@@ -48,6 +48,8 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	  ui.draggable.draggable( 'option', 'revert', false );
   
 	}
+  
+  
   
   function test(_tileNumber, _currSlot) {
 	$
@@ -74,7 +76,7 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	
 	
   
-
+// use a while loop instead, while i <= 10 : do this action (assign audio play on click) then increment i, 
 
 
 
