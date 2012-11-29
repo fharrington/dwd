@@ -42,18 +42,22 @@ tile_test.aud1.set_tile;
 	</audio>" */
 	?>
 	
-	<audio preload='auto' title='sound1'>
+	<audio preload="auto" title="sound1" id="audio1">
 	<source src="audio/sound1.wav"></source>
-	Browser!supportsound
+	<source src="audio/sound1.ogg"></source>
+	<source src="audio/sound1.mp3"></source>
+	Browsernotsupportsound
 	</audio>	
 	
 	
-	<audio preload='auto' title='sound2'>
+	<audio preload='auto' title='sound2' id="audio3>
 	<source src="audio/sound2.wav"></source>
+	<source src="audio/sound2.ogg"></source>
+	<source src="audio/sound2.mp3"></source>
 	Browser!supportsound
 	</audio>
 	
-	<audio preload='auto' title='sound3'>
+	<audio preload='auto' title='sound3' id="audio3>
 	<source src="audio/sound3.wav"></source>
 	Browser!supportsound
 	</audio>

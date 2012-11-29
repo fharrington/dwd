@@ -1,14 +1,8 @@
 $(document).ready(function() { // start doc ready; do not delete this!
 
 
-$( init );
- 
-function init() {
- 
-  // Reset the tiles
-  $('#tile-area').html( '' );
-  $('#player').html( '' );
- 
+
+
   // Create the pile of tiles
   var numbers = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   numbers.sort( function() { return Math.random() - .5 } );
@@ -47,13 +41,13 @@ function init() {
 	$('#tileDrop' + [i]).css('width', "80px").css('height', "80px").css('border', "1px solid").css('margin', "5px").css('float', "left");
 	}
 
-function controlTileDrop( event, ui ) {
-  _currSlot = $(this).data('number');
-  _tileNumber = ui.draggable.data( 'number' ); 
-  ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
-  ui.draggable.draggable( 'option', 'revert', false );
+	function controlTileDrop( event, ui ) {
+	  _currSlot = $(this).data('number');
+	  _tileNumber = ui.draggable.data( 'number' ); 
+	  ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
+	  ui.draggable.draggable( 'option', 'revert', false );
   
-  }
+	}
   
   function test(_tileNumber, _currSlot) {
 	$
@@ -66,28 +60,20 @@ function controlTileDrop( event, ui ) {
   
   	var audio_titles = Array('sound1', 'sound2', 'sound3', 'sound4', 'sound5', 'sound6');
 
-
-	
-	
-
-	console.log
-	
 	//single tile player
 	
-	for(i=0; i<=5; i++){
-		var playString1 = '$(\"audio[title][title=sound';
-		var playString2 = ']\")[0];';
-		$("#tile" + [i]).click(function() {
-			console.log(audio_titles[i]);
-			$(playString1 + i + playString2).play;
-
+	
+	for(i=1; i<3; i++){
+		//var sound = $("#audio1")[0];
+		$("#tile" + i ).click(function() {
+			console.log(i);
+			
+			$("#audio1")[0].play();
 		});
 	}
+	
+	
   
-  
-  
-}
-
 
 
 
