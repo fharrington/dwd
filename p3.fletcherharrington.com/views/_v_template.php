@@ -36,7 +36,7 @@ tile_test.aud1.set_tile;
 
 	
 	<? /*foreach ($audiofiles as $file)
-	echo "<audio preload title='{$file}'>
+	echo "<audio preload title="{$file}">
 	<source src="audio/c1.wav"></source>
 	Browser!supportsound
 	</audio>" */
@@ -50,15 +50,38 @@ tile_test.aud1.set_tile;
 	</audio>	
 	
 	
-	<audio preload='auto' title='sound2' id="audio3>
+	<audio preload="auto" title="sound2" id="audio2">
 	<source src="audio/sound2.wav"></source>
 	<source src="audio/sound2.ogg"></source>
 	<source src="audio/sound2.mp3"></source>
 	Browser!supportsound
 	</audio>
 	
-	<audio preload='auto' title='sound3' id="audio3>
+	<audio preload="auto" title="sound3" id="audio3">
 	<source src="audio/sound3.wav"></source>
+	<source src="audio/sound3.ogg"></source>
+	<source src="audio/sound3.mp3"></source>
+	Browser!supportsound
+	</audio>
+	
+	<audio preload="auto" title="sound4" id="audio4">
+	<source src="audio/sound4.wav"></source>
+	<source src="audio/sound4.ogg"></source>
+	<source src="audio/sound4.mp3"></source>
+	Browser!supportsound
+	</audio>
+	
+	<audio preload="auto" title="sound5" id="audio5">
+	<source src="audio/sound5.wav"></source>
+	<source src="audio/sound5.ogg"></source>
+	<source src="audio/sound5.mp3"></source>
+	Browser!supportsound
+	</audio>
+	
+	<audio preload="auto" title="sound6" id="audio6">
+	<source src="audio/sound6.wav"></source>
+	<source src="audio/sound6.ogg"></source>
+	<source src="audio/sound6.mp3"></source>
 	Browser!supportsound
 	</audio>
 	

@@ -4,11 +4,12 @@ $(document).ready(function() { // start doc ready; do not delete this!
 
 
   // Create the pile of tiles
-  var numbers = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  var colors = [];
   numbers.sort( function() { return Math.random() - .5 } );
  
   for ( var i=0; i<10; i++ ) {
-    $('<div>' + (i+1) + '</div>').data( 'number', numbers[i] ).attr( 'id', 'tile'+numbers[i] ).attr('class', 'acceptable').appendTo( '#tile-area' ).draggable( {
+    $('<div></div>').data( 'number', numbers[i] ).attr( 'id', 'tile'+numbers[i] ).attr('class', 'acceptable').appendTo( '#tile-area' ).draggable( {
       containment: '#content',
       stack: '#tile-area',
       cursor: 'move',
@@ -60,24 +61,47 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	}
   
   
-  	var audio_titles = Array('sound1', 'sound2', 'sound3', 'sound4', 'sound5', 'sound6');
-
+  	var audio_titles = Array('audio1', 'audio2', 'audio3', 'audio4', 'audio5', 'audio6');
+	
 	//single tile player
 	
-	
-	for(i=1; i<3; i++){
-		//var sound = $("#audio1")[0];
-		$("#tile" + i ).click(function() {
-			console.log(i);
-			
-			$("#audio1")[0].play();
+	$("#tile1").click(function () {
+		$("#audio1")[0].play();
+		$(this).effect("highlight", {color: "#FFFDFD"}, 3300);
 		});
-	}
-	
-	
-  
-// use a while loop instead, while i <= 10 : do this action (assign audio play on click) then increment i, 
+		
+	$("#tile2").click(function () {
+		$("#audio2")[0].play();
+		$(this).effect("highlight", {color: "#F46FFF"}, 3300);
+		});		
+		
+	$("#tile3").click(function () {
+		$("#audio3")[0].play();
+		$(this).effect("highlight", {color: "#2FAF1F"}, 3300);
+		});
+		
+	$("#tile4").click(function () {
+		$("#audio4")[0].play();
+		$(this).effect("highlight", {color: "#F3FBFD"}, 3300);
+		});
+		
+	$("#tile5").click(function () {
+		$("#audio5")[0].play();
+		$(this).effect("highlight", {color: "#FBC8F4"}, 3300);
+		});
+		
+	$("#tile6").click(function () {
+		$("#audio6")[0].play();
+		$(this).effect("highlight", {color: "#A3F3BF"}, 3300);
+		});
 
+
+		
+	
+	
+	
+
+	
 
 
 
