@@ -17,10 +17,12 @@ $(document).ready(function() { // start doc ready; do not delete this!
     } );
   }
   
+  
+  
   //style the #tile[i] divs
   
-  for (var i=0; i<=10; i++) {
-	$('#tile' + [i]).css('width', "80px").css('height', "80px").css('border', "1px solid").css('margin', "5px").css('float', "left");
+  for (var i=0; i<=6; i++) {
+	$('#tile' + [i]).css('width', "80px").css('height', "80px").css('border', "1px solid").css('margin', "5px").css('float', "left").css('background-color', '#FFFFFF');
 	}
  
  
@@ -38,7 +40,7 @@ $(document).ready(function() { // start doc ready; do not delete this!
  
   //style the #tileDrop[i] divs
   
-  for (var i=0; i<=10; i++) {
+  for (var i=0; i<=5; i++) {
 	$('#tileDrop' + [i]).css('width', "80px").css('height', "80px").css('border', "1px solid").css('margin', "5px").css('float', "left");
 	}
 
@@ -49,6 +51,11 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	  ui.draggable.draggable( 'option', 'revert', false );
   
 	}
+  
+  
+  //find acceptable elements of player area and play them
+  
+  $("#player").onclick(".acceptable").find(".acceptable").play(this);
   
   
   
