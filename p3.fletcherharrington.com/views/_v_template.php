@@ -88,6 +88,8 @@ tile_test.aud1.set_tile;
 	<h1>Metal Mix Up</h1>
 	<div class = "content">
 
+	<div id="playbutton">++++<div>
+	
 	<div id = "player"></div>
 		
 	<div id = "tile-area"></div>

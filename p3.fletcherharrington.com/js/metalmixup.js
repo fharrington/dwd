@@ -19,6 +19,7 @@ $(document).ready(function() { // start doc ready; do not delete this!
   
   
   
+  
   //style the #tile[i] divs
   
   for (var i=0; i<=6; i++) {
@@ -53,11 +54,7 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	}
   
   
-  //find acceptable elements of player area and play them
-  
-  $("#player").onclick(".acceptable").find(".acceptable").play(this);
-  
-  
+ 
   
   function test(_tileNumber, _currSlot) {
 	$
@@ -108,10 +105,31 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	
 	
 
+	function play_sound_queue(sounds){
+
+		var i = 0;
+		function recursive_play()
+		{
+		  //If the index is the last of the table, play the sound
+		  //without running a callback after       
+		  if(i+1 === sounds.length)
+		  {
+			play(sounds[i],null);
+		  }
+		  else
+		  {
+			//Else, play the sound, and when the playing is complete
+			//increment index by one and play the sound in the 
+			//indexth position of the array
+			play(sounds[i],function(){i++; 
+			recursive_play();});
+		}
+		}
+	}
+
 	
-
-
-
+	
+	$("#playbutton").click(function () { $("#audio5")[0].play() });
 
 
 
