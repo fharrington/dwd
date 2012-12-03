@@ -1,14 +1,12 @@
 $(document).ready(function() { // start doc ready; do not delete this!
 
 
-
-
   // Create the pile of tiles
-  var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  var numbers = [1, 2, 3, 4, 5, 6];
   var colors = [];
   numbers.sort( function() { return Math.random() - .5 } );
  
-  for ( var i=0; i<10; i++ ) {
+  for ( var i=0; i<6; i++ ) {
     $('<div></div>').data( 'number', numbers[i] ).attr( 'id', 'tile'+numbers[i] ).attr('class', 'acceptable').appendTo( '#tile-area' ).draggable( {
       containment: '#content',
       stack: '#tile-area',
@@ -16,8 +14,6 @@ $(document).ready(function() { // start doc ready; do not delete this!
       revert: true
     } );
   }
-  
-  
   
   
   //style the #tile[i] divs
@@ -45,6 +41,7 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	$('#tileDrop' + [i]).css('width', "80px").css('height', "80px").css('border', "1px solid").css('margin', "5px").css('float', "left");
 	}
 
+	//make tiles snap into top area properly
 	function controlTileDrop( event, ui ) {
 	  _currSlot = $(this).data('number');
 	  _tileNumber = ui.draggable.data( 'number' ); 
@@ -54,7 +51,7 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	}
   
   
- 
+ /*
   
   function test(_tileNumber, _currSlot) {
 	$
@@ -63,7 +60,7 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	console.log(_playOrder);
 	
 	}
-  
+  */
   
   	var audio_titles = Array('audio1', 'audio2', 'audio3', 'audio4', 'audio5', 'audio6');
 	
@@ -103,7 +100,7 @@ $(document).ready(function() { // start doc ready; do not delete this!
 		
 	
 	
-	
+	/*
 
 	function play_sound_queue(sounds){
 
@@ -126,10 +123,10 @@ $(document).ready(function() { // start doc ready; do not delete this!
 		}
 		}
 	}
-
+	*/
 	
 	
-	$("#playbutton").click(function () { $("#audio5")[0].play() });
+	//$("#playbutton").click(function () { $("#audio5")[0].play() });
 
 
 
