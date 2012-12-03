@@ -126,10 +126,56 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	*/
 	
 	
-	$("#playbutton").click(function () { $("#audio5")[0].play() });
+	$("#playbutton").click(play_all);
+	
+	//function () { $("#audio5")[0].play() });
 
+	//play sequentially
+	
+	function play(audio, callback) {
 
+	  audio.play();
 
+	  if(callback)
+	  {
+		  //When the audio object completes it's playback, call the callback
+		  //provided      
+		  $(audio).on('ended', callback);
+	  }
+	}
+	
+	
+
+//Changed the name to better reflect the functionality
+	function play_sound_queue(sounds){
+
+		var i = 0;
+		function recursive_play()
+		{
+		  //If the index is the last of the table, play the sound
+		  //without running a callback after       
+		  if(i+1 === sounds.length)
+		  {
+			play(sounds[i],null);
+		  }
+		  else
+		  {
+			//Else, play the sound, and when the playing is complete
+			//increment index by one and play the sound in the 
+			//indexth position of the array
+			play(sounds[i],function(){i++; recursive_play();});
+		  }
+		}
+
+	//Call the recursive_play for the first time
+	recursive_play();   
+	}
+		
+	
+	
+	function play_all(){
+		play_sound_queue([new Audio("audio/sound1.ogg"), new Audio("audio/sound2.ogg"), new Audio("audio/sound3.ogg")])
+		}
 
 
 
@@ -154,25 +200,6 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	});
 	
 	
-	function play_sound_queue(sounds){
-
-    var i = 0;
-    function recursive_play()
-    {
-      //If the index is the last of the table, play the sound
-      //without running a callback after       
-      if(index+1 === sounds.length)
-      {
-        play(sounds[i],null);
-      }
-      else
-      {
-        //Else, play the sound, and when the playing is complete
-        //increment index by one and play the sound in the 
-        //indexth position of the array
-        play(sounds[i],function(){i++; recursive_play();});
-      }
-    }
 
 	
 	
