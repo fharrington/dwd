@@ -126,7 +126,7 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	*/
 	
 	
-	//$("#playbutton").click(function () { $("#audio5")[0].play() });
+	$("#playbutton").click(function () { $("#audio5")[0].play() });
 
 
 
