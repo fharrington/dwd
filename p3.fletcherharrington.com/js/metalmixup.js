@@ -24,9 +24,8 @@ $(document).ready(function() { // start doc ready; do not delete this!
  
  
   // Create the tile slots
-  var words = [ 'red', 'green', 'blue', 'brown', 'yellow', 'purple', 'orange', 'pink', 'gray', 'white' ];
   for ( var i=1; i<=5; i++ ) {
-    $('<div>?</div>').attr('id', 'tileDrop'+[i]).data( 'number', i ).appendTo( '#player' ).droppable( {
+    $("<div></div>").attr('id', 'tileDrop'+[i]).data( 'number', i ).appendTo( '#player' ).droppable( {
       accept: ".acceptable",
       hoverClass: 'hovered',
       drop: controlTileDrop
@@ -51,7 +50,7 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	}
   
   
- /*
+ 
   
   function test(_tileNumber, _currSlot) {
 	$
@@ -60,7 +59,10 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	console.log(_playOrder);
 	
 	}
-  */
+	
+	$("#playbutton").click(test);
+	
+  
   
   	var audio_titles = Array('audio1', 'audio2', 'audio3', 'audio4', 'audio5', 'audio6');
 	
@@ -68,32 +70,32 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	
 	$("#tile1").click(function () {
 		$("#audio1")[0].play();
-		$(this).effect("highlight", {color: "#FFFDFD"}, 3300);
+		$(this).effect("highlight", {color: "#556270"}, 3300);
 		});
 		
 	$("#tile2").click(function () {
 		$("#audio2")[0].play();
-		$(this).effect("highlight", {color: "#F46FFF"}, 3300);
+		$(this).effect("highlight", {color: "#33CC66"}, 3300);
 		});		
 		
 	$("#tile3").click(function () {
 		$("#audio3")[0].play();
-		$(this).effect("highlight", {color: "#2FAF1F"}, 3300);
+		$(this).effect("highlight", {color: "#FFB238"}, 3300);
 		});
 		
 	$("#tile4").click(function () {
 		$("#audio4")[0].play();
-		$(this).effect("highlight", {color: "#F3FBFD"}, 3300);
+		$(this).effect("highlight", {color: "#FF7D10"}, 3300);
 		});
 		
 	$("#tile5").click(function () {
 		$("#audio5")[0].play();
-		$(this).effect("highlight", {color: "#FBC8F4"}, 3300);
+		$(this).effect("highlight", {color: "#FF005B"}, 3300);
 		});
 		
 	$("#tile6").click(function () {
 		$("#audio6")[0].play();
-		$(this).effect("highlight", {color: "#A3F3BF"}, 3300);
+		$(this).effect("highlight", {color: "#49007E"}, 3300);
 		});
 
 
