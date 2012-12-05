@@ -10,6 +10,17 @@
 <link rel="stylesheet" type="text/css" href="/css/users.css">
 
 
+<!--<script type="text/javascript">
+$(document).ready(function() { // start doc ready; do not delete this!
+
+
+tile_test.aud1.set_tile;
+
+
+}); // end doc ready; do not delete this!
+</script>
+-->
+
 </head>
 <body>
 <div id = "wrap">
@@ -18,8 +29,10 @@
 	<?
 
 	?>
+
 	
 	<? $audiofiles = Array("sound1", "sound2", "sound3"); ?>
+
 
 	
 	<? /*foreach ($audiofiles as $file)
