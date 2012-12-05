@@ -69,13 +69,18 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	// not used currently..
   	var audio_titles = Array('audio1', 'audio2', 'audio3', 'audio4', 'audio5', 'audio6');
 	
-	//single tile player - rewrite to use path/file method used in recursive player
+	//single tile players - rewrite to use path/file method used in recursive player
 	
-	$("#tile1").click(function () {
-		$("#audio1")[0].play();
-		$(this).effect("highlight", {color: "#556270"}, 3300);
-		});
+	//experimenting with recursive style method for singles-------
+	$("#tile1").click(play1).click(highlight);
 		
+		function highlight (){
+		$(this).effect("highlight", {color: "#556270"}, 3300);
+		};
+	
+	// -------
+	
+	
 	$("#tile2").click(function () {
 		$("#audio2")[0].play();
 		$(this).effect("highlight", {color: "#33CC66"}, 3300);
@@ -143,7 +148,7 @@ $(document).ready(function() { // start doc ready; do not delete this!
 		}
 
 	//Call the recursive_play for the first time
-	recursive_play();   
+	recursive_play();
 	}
 		
 	
@@ -152,6 +157,10 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	function play_all(){
 		play_sound_queue([new Audio("audio/sound1.ogg"), new Audio("audio/sound2.ogg"), new Audio("audio/sound3.ogg")])
 	}
+	
+	function play1(){
+		play_sound_queue([new Audio("audio/sound1.ogg")]);
+		}
 
 	//trigger play_all
 	$("#playbutton").click(play_all);
@@ -159,7 +168,7 @@ $(document).ready(function() { // start doc ready; do not delete this!
 		
 		
 
-// start OLD code, keeping in case needed for reference.		
+// start OLD code below, keeping in case needed for reference.		
 		
 		
 /*
