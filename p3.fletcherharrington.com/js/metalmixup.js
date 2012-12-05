@@ -1,7 +1,7 @@
 $(document).ready(function() { // start doc ready; do not delete this!
 
 
-  // Create the pile of tiles
+  // Create the pile of tiles randomly arranged
   var numbers = [1, 2, 3, 4, 5, 6];
   var colors = [];
   numbers.sort( function() { return Math.random() - .5 } );
@@ -16,14 +16,14 @@ $(document).ready(function() { // start doc ready; do not delete this!
   }
   
   
-  //style the #tile[i] divs
+  //style the #tile[i] divs with javascript generated inline css (change to external?)
   
   for (var i=0; i<=6; i++) {
 	$('#tile' + [i]).css('width', "80px").css('height', "80px").css('border', "1px solid").css('margin', "5px").css('float', "left").css('background-color', '#FFFFFF');
 	}
  
  
-  // Create the tile slots
+  // Create the tile slots able to take a dropped tile snapping it into position
   for ( var i=1; i<=5; i++ ) {
     $("<div></div>").attr('id', 'tileDrop'+[i]).data( 'number', i ).appendTo( '#player' ).droppable( {
       accept: ".acceptable",
@@ -50,7 +50,8 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	}
   
   
- 
+
+  // attempt to sense the current order of tiles.. NOT WORKING
   
   function test(_tileNumber, _currSlot) {
 	$
@@ -64,9 +65,11 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	
   
   
+  
+	// not used currently..
   	var audio_titles = Array('audio1', 'audio2', 'audio3', 'audio4', 'audio5', 'audio6');
 	
-	//single tile player
+	//single tile player - rewrite to use path/file method used in recursive player
 	
 	$("#tile1").click(function () {
 		$("#audio1")[0].play();
@@ -100,39 +103,8 @@ $(document).ready(function() { // start doc ready; do not delete this!
 
 
 		
-	
-	
-	/*
 
-	function play_sound_queue(sounds){
-
-		var i = 0;
-		function recursive_play()
-		{
-		  //If the index is the last of the table, play the sound
-		  //without running a callback after       
-		  if(i+1 === sounds.length)
-		  {
-			play(sounds[i],null);
-		  }
-		  else
-		  {
-			//Else, play the sound, and when the playing is complete
-			//increment index by one and play the sound in the 
-			//indexth position of the array
-			play(sounds[i],function(){i++; 
-			recursive_play();});
-		}
-		}
-	}
-	*/
-	
-	
-	$("#playbutton").click(play_all);
-	
-	//function () { $("#audio5")[0].play() });
-
-	//play sequentially
+	//play sequentially, allow for a callback, if no callback, plays only once
 	
 	function play(audio, callback) {
 
@@ -148,7 +120,8 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	
 	
 
-//Changed the name to better reflect the functionality
+	//plays "sounds" (sound path/file) passed in, used in function play_all, if no callback must be last file -> stop play
+	
 	function play_sound_queue(sounds){
 
 		var i = 0;
@@ -174,13 +147,21 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	}
 		
 	
+	//calls 'play_sound_queue' (and thereby 'play') on given audio files.
 	
 	function play_all(){
 		play_sound_queue([new Audio("audio/sound1.ogg"), new Audio("audio/sound2.ogg"), new Audio("audio/sound3.ogg")])
-		}
+	}
 
+	//trigger play_all
+	$("#playbutton").click(play_all);
 
+		
+		
 
+// start OLD code, keeping in case needed for reference.		
+		
+		
 /*
 
 	
@@ -203,8 +184,6 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	
 	
 
-	
-	
 	var audio1 = $("audio[title][title=sound1]")[0];
 	var audio2 = $("audio[title][title=sound2]")[0];
 
@@ -246,12 +225,6 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	}
 	
 	});
-	
-
-
-	
-
-	
 	
 }
 	
