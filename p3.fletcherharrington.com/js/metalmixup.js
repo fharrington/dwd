@@ -17,7 +17,9 @@ $(document).ready(function() { // start doc ready; do not delete this!
   
   
   //style the #tile[i] divs
-  
+  // SB 12/5: Suggestion: Rather than loop through the ids, you could just give them all the same class and target by that class.
+  // Also, since it's not doing anything dynamic with the styles, you could do this straight from your CSS file.
+  // Same notes for #tileDrop below
   for (var i=0; i<=6; i++) {
 	$('#tile' + [i]).css('width', "80px").css('height', "80px").css('border', "1px solid").css('margin', "5px").css('float', "left").css('background-color', '#FFFFFF');
 	}
