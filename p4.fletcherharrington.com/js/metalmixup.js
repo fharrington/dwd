@@ -46,7 +46,6 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	  _tileNumber = ui.draggable.data( 'number' ); 
 	  ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
 	  ui.draggable.draggable( 'option', 'revert', false );
-  
 	}
   
   
@@ -57,11 +56,11 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	$
 	_playOrder = Array('','','','','');
 	_playOrder[_currSlot] = _tileNumber;
-	console.log(_playOrder);
+	console.log(_tileNumber);
 	
 	}
 	
-	$("#playbutton").click(test);
+	$("#tile1").click(test);
 	
   
   
