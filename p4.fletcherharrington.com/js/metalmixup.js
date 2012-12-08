@@ -7,9 +7,9 @@ $(document).ready(function() { // start doc ready; do not delete this!
   numbers.sort( function() { return Math.random() - .5 } );
  
   for ( var i=0; i<6; i++ ) {
-    $('<div></div>').data( 'number', numbers[i] ).attr( 'id', 'tile'+numbers[i] ).attr('class', 'acceptable').appendTo( '#tile-area' ).draggable( {
+    $('<div>' + numbers[i] + '</div>').data( 'number', numbers[i] ).attr( 'id', 'tile'+numbers[i] ).attr('class', 'acceptable').appendTo( '#tile-area' ).draggable( {
       containment: '#content',
-      stack: '#tile-area',
+      stack: '#tile-area div',
       cursor: 'move',
       revert: true
     } );
@@ -26,51 +26,36 @@ $(document).ready(function() { // start doc ready; do not delete this!
   // Create the tile slots able to take a dropped tile snapping it into position
   for ( var i=1; i<=5; i++ ) {
     $("<div></div>").attr('id', 'tileDrop'+[i]).data( 'number', i ).appendTo( '#player' ).droppable( {
-      accept: ".acceptable",
+      accept: '#tile-area div',
       hoverClass: 'hovered',
       drop: controlTileDrop
     } );
   }
  
- 
- 
+ 	//make tiles snap into top area properly
+	function controlTileDrop( event, ui ) {
+	  currSlot = $(this).data('number');
+	  tileNumber = ui.draggable.data( 'number' ); 
+	  ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
+	  ui.draggable.draggable( 'option', 'revert', false );
+	  
+	}
+
+   
+   
   //style the #tileDrop[i] divs
   
   for (var i=0; i<=5; i++) {
 	$('#tileDrop' + [i]).css('width', "80px").css('height', "80px").css('border', "1px solid").css('margin', "5px").css('float', "left");
 	}
-
-	//make tiles snap into top area properly
-	function controlTileDrop( event, ui ) {
-	  _currSlot = $(this).data('number');
-	  _tileNumber = ui.draggable.data( 'number' ); 
-	  ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
-	  ui.draggable.draggable( 'option', 'revert', false );
+	
+	if (typeof tileNumber != 'undefined') {
+	console.log(tileNumber);
 	}
-  
-  
-
-  // attempt to sense the current order of tiles.. NOT WORKING
-  
-  function test(_tileNumber, _currSlot) {
-	$
-	_playOrder = Array('','','','','');
-	_playOrder[_currSlot] = _tileNumber;
-	console.log(_tileNumber);
-	
-	}
-	
-	$("#tile1").click(test);
-	
-  
-  
-  
-	// not used currently..
-  	var audio_titles = Array('audio1', 'audio2', 'audio3', 'audio4', 'audio5', 'audio6');
 	
 	//single tile players - rewrite to use path/file method used in recursive player
 	
-	//experimenting with recursive style method for singles-------
+	//experimenting with recursive style function for singles-------
 	$("#tile1").click(play1).click(highlight);
 		
 		function highlight (){
