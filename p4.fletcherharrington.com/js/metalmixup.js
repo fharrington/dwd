@@ -32,15 +32,25 @@ $(document).ready(function() { // start doc ready; do not delete this!
     } );
   }
  
+	_currSlot = "";
+	_tileNumber = "";
+	
  	//make tiles snap into top area properly
+	//report tile number and it's current slot
 	function controlTileDrop( event, ui ) {
-	  currSlot = $(this).data('number');
-	  tileNumber = ui.draggable.data( 'number' ); 
+	  _currSlot = $(this).data('number');
+	  console.log(_currSlot);
+	  _tileNumber = ui.draggable.data( 'number' ); 
+	  console.log(_tileNumber);
 	  ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
 	  ui.draggable.draggable( 'option', 'revert', false );
+	  var droplocation = Array(_currSlot, _tileNumber);
+	  console.log(droplocation);
 	  
 	}
-
+	
+	
+   //$('#tileDrop5').click(console.log(droplocation));
    
    
   //style the #tileDrop[i] divs
@@ -49,10 +59,9 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	$('#tileDrop' + [i]).css('width', "80px").css('height', "80px").css('border', "1px solid").css('margin', "5px").css('float', "left");
 	}
 	
-	if (typeof tileNumber != 'undefined') {
-	console.log(tileNumber);
-	}
 	
+	console.log(_tileNumber);
+		
 	//single tile players - rewrite to use path/file method used in recursive player
 	
 	//experimenting with recursive style function for singles-------
