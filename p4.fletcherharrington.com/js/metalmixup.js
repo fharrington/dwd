@@ -31,26 +31,31 @@ $(document).ready(function() { // start doc ready; do not delete this!
       drop: controlTileDrop
     } );
   }
+  	$("#tileDrop3").on('drop', console.log("YUP"));
+
  
-	_currSlot = "";
-	_tileNumber = "";
+	currSlot = "";
+	tileNumber = "";
+	droplocation = "";
 	
  	//make tiles snap into top area properly
 	//report tile number and it's current slot
 	function controlTileDrop( event, ui ) {
-	  _currSlot = $(this).data('number');
-	  console.log(_currSlot);
-	  _tileNumber = ui.draggable.data( 'number' ); 
-	  console.log(_tileNumber);
+	  currSlot = $(this).data('number');
+	  console.log(currSlot);
+	  tileNumber = ui.draggable.data( 'number' ); 
+	  console.log(tileNumber);
 	  ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
 	  ui.draggable.draggable( 'option', 'revert', false );
-	  var droplocation = Array(_currSlot, _tileNumber);
-	  console.log(droplocation);
-	  
+	  var droplocation = Array();
+	  droplocation[currSlot] = tileNumber;
+	  return droplocation
 	}
 	
 	
-   //$('#tileDrop5').click(console.log(droplocation));
+	
+	$('#tiledrop[1]').click(function () { 
+    if (typeof(droplocation)!='undefined'){ console.log("location defined") }; });
    
    
   //style the #tileDrop[i] divs
@@ -60,7 +65,7 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	}
 	
 	
-	console.log(_tileNumber);
+	$('#tile4').click(function () { console.log(droplocation) });
 		
 	//single tile players - rewrite to use path/file method used in recursive player
 	
