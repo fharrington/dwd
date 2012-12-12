@@ -29,32 +29,44 @@ $(document).ready(function() { // start doc ready; do not delete this!
       accept: '#tile-area div',
       hoverClass: 'hovered',
       drop: controlTileDrop
-    } );
+    } );	
   }
-  	$("#tileDrop3").on('drop', console.log("YUP"));
 
- 
+	currTile = "";
 	currSlot = "";
 	tileNumber = "";
+	
+	//array with slot/number
 	droplocation = "";
 	
  	//make tiles snap into top area properly
 	//report tile number and it's current slot
 	function controlTileDrop( event, ui ) {
-	  currSlot = $(this).data('number');
-	  console.log(currSlot);
-	  tileNumber = ui.draggable.data( 'number' ); 
-	  console.log(tileNumber);
 	  ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
 	  ui.draggable.draggable( 'option', 'revert', false );
 	  var droplocation = Array();
 	  droplocation[currSlot] = tileNumber;
-	  return droplocation
+	  var tilePos = $(this).position();
+	  var slotPos = ui.draggable.position();
+	  
+	  
+	  tileNumber = ui.draggable.data( 'number' ); 
+	  console.log(tileNumber);
+	  
+	  tileName = ui.draggable.attr('id');
+	  console.log(tileName);
+	  
+	  currSlot = $(this).data('number');
+	  console.log(currSlot);
+
+
+	  
+	  //if(tilePos = slotPos) { $(ui.draggable).toggle({ }
+	  
 	}
-	
-	
-	
-	$('#tiledrop[1]').click(function () { 
+
+
+	$('#tiledrop1').click(function () { 
     if (typeof(droplocation)!='undefined'){ console.log("location defined") }; });
    
    
