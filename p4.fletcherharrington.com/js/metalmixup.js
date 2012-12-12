@@ -26,7 +26,7 @@ $(document).ready(function() { // start doc ready; do not delete this!
   // Create the tile slots able to take a dropped tile snapping it into position
   for ( var i=1; i<=5; i++ ) {
     $("<div></div>").attr('id', 'tileDrop'+[i]).data( 'number', i ).appendTo( '#player' ).droppable( {
-      accept: '#tile-area div',
+      accept: '#tile-area div' //'.playItem',
       hoverClass: 'hovered',
       drop: controlTileDrop
     } );	
@@ -61,7 +61,7 @@ $(document).ready(function() { // start doc ready; do not delete this!
 
 
 	  
-	  //if(tilePos = slotPos) { $(ui.draggable).toggle({ }
+	  if(tilePos = slotPos) { $(ui.draggable).toggle( function(){ $(this).css('id', 'playPos' + currSlot).css('class', 'playItem'); }); }
 	  
 	}
 
