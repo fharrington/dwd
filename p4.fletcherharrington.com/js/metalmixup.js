@@ -1,13 +1,13 @@
 $(document).ready(function() { // start doc ready; do not delete this!
 
 
-  // Create the pile of tiles randomly arranged
-  var numbers = [1, 2, 3, 4, 5, 6];
+  // Create the pile of tiles randomly arranged (just create 6 for now, shold be 10)
+  var numbers = [1, 2, 3, 4, 5, 6]; //numbers to be randomly arranged (shuffle)
   var colors = [];
   numbers.sort( function() { return Math.random() - .5 } );
  
   for ( var i=0; i<6; i++ ) {
-    $('<div>' + numbers[i] + '</div>').data( 'number', numbers[i] ).attr( 'id', 'tile'+numbers[i] ).attr('class', 'acceptable').appendTo( '#tile-area' ).draggable( {
+    $('<div>' + (numbers[i]) + '</div>').data( 'number', numbers[i] ).attr( 'id', 'tile'+ numbers[i] ).attr('class', 'acceptable').appendTo( '#tile-area' ).draggable( {
       containment: '#content',
       stack: '#tile-area div',
       cursor: 'move',
@@ -25,7 +25,7 @@ $(document).ready(function() { // start doc ready; do not delete this!
  
   // Create the tile slots able to take a dropped tile snapping it into position
   for ( var i=1; i<=5; i++ ) {
-    $("<div></div>").attr('id', 'tileDrop'+[i]).data( 'number', i ).appendTo( '#player' ).droppable( {
+    $("<div></div>").attr('id', 'tileDrop'+[i]).data( 'number', numbers[i] ).appendTo( '#player' ).droppable( {
       //accept: '#tile-area div',
 	  accept: '#tile-area > *, .playItem > *',
       hoverClass: 'hovered',
@@ -66,9 +66,22 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	  
 	}
 
-
+	var slotPos = $('#tileDrop1').position();
+	var tilePos = $('#tile1').position();
+	console.log(slotPos);
+	console.log(tilePos);
 	
-	$('#tiledrop1').click(function () { 
+	function notPlayable () {
+		if (slotPos != tilePos)
+		{
+		$('#tile1').removeClass('playItem'); 
+		}
+	}
+	
+	$('#tile1').on("mouseover", notPlayable);
+	
+	
+	$('#tileDrop1').click(function () { 
     if (typeof(droplocation)!='undefined'){ console.log("location defined") }; });
    
    
