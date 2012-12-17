@@ -3,11 +3,11 @@ $(document).ready(function() { // start doc ready; do not delete this!
 
   // Create the pile of tiles randomly arranged (just create 6 for now, shold be 10)
   var numbers = [1, 2, 3, 4, 5, 6]; //numbers to be randomly arranged (shuffle)
-  var colors = [];
+  //var colors = [];
   numbers.sort( function() { return Math.random() - .5 } );
  
   for ( var i=0; i<6; i++ ) {
-    $('<div>' + (numbers[i]) + '</div>').data( 'number', numbers[i] ).attr( 'id', 'tile'+ numbers[i] ).attr('class', 'acceptable').appendTo( '#tile-area' ).draggable( {
+    $('<div>' + (numbers[i]) + '</div>').data( 'number', numbers[i] ).data( 'file', "audio/sound" + numbers[i] + ".ogg").attr( 'id', 'tile'+ numbers[i] ).attr('class', 'acceptable').appendTo( '#tile-area' ).draggable( {
       containment: '#content',
       stack: '#tile-area div',
       cursor: 'move',
@@ -19,13 +19,13 @@ $(document).ready(function() { // start doc ready; do not delete this!
   //style the #tile[i] divs with javascript generated inline css (change to external?)
   
   for (var i=0; i<=6; i++) {
-	$('#tile' + [i]).css('width', "80px").css('height', "80px").css('border', "1px solid").css('margin', "5px").css('float', "left").css('background-color', '#FFFFFF');
+	$('#tile' + [i]).css('width', "80px").css('height', "80px").css('border', "1px solid").css('margin', "5px").css('float', "left").css('background-color', '#000000');
 	}
  
  
   // Create the tile slots able to take a dropped tile snapping it into position
   for ( var i=1; i<=5; i++ ) {
-    $("<div></div>").attr('id', 'tileDrop'+[i]).data( 'number', numbers[i] ).appendTo( '#player' ).droppable( {
+    $("<div></div>").attr('id', 'tileDrop'+[i]).data( 'number', i ).appendTo( '#player' ).droppable( {
       //accept: '#tile-area div',
 	  accept: '#tile-area > *, .playItem > *',
       hoverClass: 'hovered',
@@ -33,6 +33,12 @@ $(document).ready(function() { // start doc ready; do not delete this!
     } );	
   }
 
+    //style the #tileDrop[i] divs
+  
+  for (var i=0; i<=5; i++) {
+	$('#tileDrop' + [i]).css('width', "80px").css('height', "80px").css('border', "1px solid").css('margin', "5px").css('float', "left");
+	}
+  
 	currTile = "";
 	currSlot = "";
 	tileNumber = "";
@@ -61,43 +67,37 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	  console.log(currSlot);
 
 	//if tile position is equal to slot position add playItem class to add to recursive play
-	 if(tilePos = slotPos) { $(ui.draggable).addClass('playItem'); } 
-	 //if(tilePos = slotPos) { $(ui.draggable).toggle( function(){ $(this).css('class', 'playItem'); }); }
-	  
+	//also add a data 'playSlot' to indicate current slot
+	 if(tilePos = slotPos) { $(ui.draggable).addClass('playItem').data('playSlot', currSlot); } 
+	 	  
 	}
-
+	
+	//DELETE - checks position of tiles and slots
 	var slotPos = $('#tileDrop1').position();
 	var tilePos = $('#tile1').position();
 	console.log(slotPos);
 	console.log(tilePos);
 	
+	//function to remove playItem div
 	function notPlayable () {
 		if (slotPos != tilePos)
 		{
-		$('#tile1').removeClass('playItem'); 
+		$(this).removeClass('playItem'); 
+		$(this).removeData('playSlot');
 		}
 	}
+	//remove playItem class and playSlot data when tile dragged off slot
+	$('.acceptable').on("drag", notPlayable);
 	
-	$('#tile1').on("mouseover", notPlayable);
-	
-	
-	$('#tileDrop1').click(function () { 
-    if (typeof(droplocation)!='undefined'){ console.log("location defined") }; });
    
    
-  //style the #tileDrop[i] divs
-  
-  for (var i=0; i<=5; i++) {
-	$('#tileDrop' + [i]).css('width', "80px").css('height', "80px").css('border', "1px solid").css('margin', "5px").css('float', "left");
-	}
+
 	
-	
-	$('#tile4').click(function () { console.log(droplocation) });
-		
+			
 	//single tile players - rewrite to use path/file method used in recursive player
 	
 	//experimenting with recursive style function for singles-------
-	$("#tile1").click(play1).click(highlight);
+	$("#tile1").click(play_one).click(highlight);
 		
 		function highlight (){
 		$(this).effect("highlight", {color: "#556270"}, 3300);
@@ -131,12 +131,80 @@ $(document).ready(function() { // start doc ready; do not delete this!
 		$(this).effect("highlight", {color: "#49007E"}, 3300);
 		});
 
-
-		
+	
+	
 
 	//play sequentially, allow for a callback, if no callback, plays only once
 	
 	function play(audio, callback) {
+	
+	  audio.play();
+
+	  if(callback)
+	  {
+		  //When the audio object completes it's playback, call the callback
+		  //provided      
+		  $(audio).on('ended', callback);
+	  }
+	}
+	
+
+	//plays "sounds" (sound path/file) passed in, used in function play_all, if no callback must be last file -> stop play
+	
+	function play_sound_queue(sounds){	
+
+		var i = 0;
+		function recursive_play()
+			{
+			  //If the index is the last of the table, play the sound
+			  //without running a callback after       
+			  if(i+1 === sounds.length)
+			  {
+				play(sounds[i],null);
+			  }
+			  else
+			  {
+				//Else, play the sound, and when the playing is complete
+				//increment index by one and play the sound in the 
+				//indexth position of the array
+				play(sounds[i],function(){i++; recursive_play();});
+			  }
+			}
+
+	//Call the recursive_play for the first time
+	recursive_play();
+	}
+		
+	//calls 'play_sound_queue' (and thereby 'play') on given audio files.
+	function play_all()
+		{
+			play_sound_queue([new Audio("audio/sound1.ogg"), new Audio("audio/sound2.ogg"), new Audio("audio/sound3.ogg")])
+		}
+			
+			
+	//trigger play_all
+	$("#playbutton").click(play_all);
+
+
+	//pull filename from tiles
+	var file = "";
+	var fil = "";
+	
+	//WHY WONT THIS PLAY ??
+	function play_one()
+		{
+			var file = $(this).data('file');
+			var fil  = '"' + file + '"';
+			var type = jQuery.type(fil);
+			console.log(type);
+			console.log(fil);
+
+			play_sound_queue([new Audio(fil)])
+		}		
+	
+	/*
+	//SINGLE play in one function
+	function play_single(audio, callback) {
 
 	  audio.play();
 
@@ -149,119 +217,18 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	}
 	
 	
-
-	//plays "sounds" (sound path/file) passed in, used in function play_all, if no callback must be last file -> stop play
 	
-	function play_sound_queue(sounds){
-
-		var i = 0;
-		function recursive_play()
+	
+	//SINGLE play in one function
+	$('.acceptable').click(function () 
 		{
-		  //If the index is the last of the table, play the sound
-		  //without running a callback after       
-		  if(i+1 === sounds.length)
-		  {
-			play(sounds[i],null);
-		  }
-		  else
-		  {
-			//Else, play the sound, and when the playing is complete
-			//increment index by one and play the sound in the 
-			//indexth position of the array
-			play(sounds[i],function(){i++; recursive_play();});
-		  }
+		var number = $(this).data('number');
+		console.log(number);
+		console.log($('#tile' + number ).data('file'));
+		$('#tile' + number ).click(play1);
 		}
-
-	//Call the recursive_play for the first time
-	recursive_play();
-	}
-		
+	);
+	*/
 	
-	//calls 'play_sound_queue' (and thereby 'play') on given audio files.
-	
-	function play_all(){
-		play_sound_queue([new Audio("audio/sound1.ogg"), new Audio("audio/sound2.ogg"), new Audio("audio/sound3.ogg")])
-	}
-	
-	function play1(){
-		play_sound_queue([new Audio("audio/sound1.ogg")]);
-		}
-
-	//trigger play_all
-	$("#playbutton").click(play_all);
-
-		
-		
-
-// start OLD code below, keeping in case needed for reference.		
-		
-		
-/*
-
-	
-	var audio_title_array = new Array("audio[title][title=sound1]", "audio[title][title=sound2]", "audio[title][title=sound3]");
-	var length = audio_title_array.length;
-	
-	
-
-	//make them play sequentially
-		$(".tile").click(function() {
-		for (var i=0; i <  length; i++)	{	
-				
-				
-				console.log(length-1);
-				console.log(i);
-				console.log(audio_title_array[i]);
-
-		}
-	});
-	
-	
-
-	var audio1 = $("audio[title][title=sound1]")[0];
-	var audio2 = $("audio[title][title=sound2]")[0];
-
-	
-	//single tile player
-	
-	$(".red").click(function() {
-		audio1.play();		
-	});
-	
-	$(".orange").click(function() {
-	audio2.play();
-	});
-	
-	
-	function getTileColor {
-		$('.tile').click(function() {
-			var color = $(this).css('background-color');
-			console.log(color);
-			
-		});
-	}
-	
-	//multi-tile player
-	
-	function selectNext() {
-		console.log("next")
-		}
-		
-	function playNext () {
-		console.log("testing");
-		}
-		
-	
-	$(".red").click(function() {
-	for (i=0; i<length; i++) { 
-	console.log(i);
-	$(audio_title_array[i]).on("ended", playNext).on("ended", selectNext);
-	}
-	
-	});
-	
-}
-	
-*/
 
 });
