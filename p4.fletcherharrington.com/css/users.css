@@ -153,3 +153,30 @@ h3 {
   box-shadow: 0px 0px 20px 10px white;
   transform: scale(0.9);
   opacity: 0.7; }
+
+
+.tile {
+	border:1px solid white;
+	width:80px;
+	height:80px;
+	margin:5px;
+	float:left;
+	background-color:black;
+}
+
+/* SB: Make the play button look like a button */
+#playbutton {
+	cursor:pointer;
+}
+
+.slot {
+	width:80px;
+	height:80px;
+	border:1px solid white;
+	margin:5px;
+	float:left;
+}
+
+.slotted {
+	background-color:red;
+}
