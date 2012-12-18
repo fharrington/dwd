@@ -21,6 +21,7 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	        	.attr('class', 'tile')
 	        	.appendTo('#tile-area')
 	        	.draggable({
+					//start: function (event, ui){ console.log("STARTING") },
 		            containment: '#content',
 		            stack: '#tile-area div',
 		            cursor: 'move',
@@ -28,7 +29,6 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	        });
 	    }
 	
-	    // SB: Moved tile styling to the ".tile" class in users.css
 	
 	    // Create the tile slots able to take a dropped tile snapping it into position
 	    // SB: Added "slot" class to be stiled in users.css
@@ -39,6 +39,7 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	        .data('number', i)
 	        .appendTo('#player')
 	        .droppable({
+				//start: function (event, ui){ console.log("STARTING") },
 	            accept: '#tile-area > *',
 	            hoverClass: 'hovered',
 	            drop: controlTileDrop,
@@ -158,6 +159,8 @@ $(document).ready(function() { // start doc ready; do not delete this!
 		* 
 		*/ 
 	    function controlTileOut(event, ui) {
+		
+			console.log("FIRE");
 	    
 	    	var tileNumber = ui.draggable.data('number');
 	    	var slotNumber = $(this).data('number');

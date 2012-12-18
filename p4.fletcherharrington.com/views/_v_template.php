@@ -16,7 +16,6 @@
 <div id = "wrap">
 	<div id = "page">
 	
-	
 	<audio preload="auto" title="sound1" id="audio1">
 	<source src="audio/sound1.wav"></source>
 	<source src="audio/sound1.ogg"></source>
@@ -87,6 +86,7 @@
 	<source src="audio/sound10.mp3"></source>
 	Browser!supportsound
 	</audio>
+	
 	
 	<h1>Metal Mix Up</h1>
 	<div class = "content">
