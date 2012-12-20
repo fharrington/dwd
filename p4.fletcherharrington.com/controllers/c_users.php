@@ -124,7 +124,7 @@ class users_controller extends base_controller {
 	}
 }
 	
-	public function profile($streamerror = NULL, $mypostserror = NULL, $noposts = NULL) {
+	public function profile($streamerror = NULL, $mypostserror = NULL, $noposts = NULL, $nofiles = NULL) {
 	
 		# Load client files
 		$client_files = Array(
@@ -166,9 +166,9 @@ class users_controller extends base_controller {
 		
 		$files = DB::instance(DB_NAME)->select_array($q, 'file'); 
 		
-		
 		if (!$myposts) { $noposts = "1"; }
-
+		if (!$files) { $nofiles = "1"; }
+		
 		# Setup view
 		$this->template->content = View::instance('v_users_profile');
 		$this->template->title   = "Profile of".$this->user->first_name;
@@ -177,7 +177,13 @@ class users_controller extends base_controller {
 		$this->template->content->mypostserror = $mypostserror;
 		$this->template->content->noposts = $noposts;
 		$this->template->content->files = $files;
+		$this->template->content->nofiles = $nofiles;
+		
 			
+			
+
+	
+		
 		# Render template
 		echo $this->template;
 }

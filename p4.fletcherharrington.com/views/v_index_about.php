@@ -2,5 +2,5 @@
 <h1>About SoundLoft</h1>
 
 <p>
-Say something was the brilliant idea of some guy who visited twitter once and decided to build a similar site with less funcitonality!... ya well at least it works... mostly :) </p>
+Soundloft gives musicians a place to connect, share their music and explore the music of others. </p>
 </div>
