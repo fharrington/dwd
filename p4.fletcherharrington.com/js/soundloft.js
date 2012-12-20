@@ -1,5 +1,7 @@
 $(document).ready(function() { // start doc ready; do not delete this!
    
+   
+   
    	/*-------------------------------------------------------------------------------------------------
    	Set up the tile mixer
    	-------------------------------------------------------------------------------------------------*/
@@ -14,7 +16,7 @@ $(document).ready(function() { // start doc ready; do not delete this!
 	    // Generate the tiles
 	    // SB: Changed "acceptable" class to "tile"...helped me better understand the pieces
 	    for (var i = 0; i < 10; i++) {
-	        $('<div>' + (numbers[i]) + '</div>')
+	        $('<div>' + (numbers[i]) + '</div>zz')
 	        	.data('number', numbers[i])
 	        	.data('file', "audio/sound" + numbers[i] + fileExtension)
 	        	.attr('id', 'tile' + numbers[i])
@@ -178,10 +180,6 @@ $(document).ready(function() { // start doc ready; do not delete this!
 		*/   
 	    function playSound(tile_number, this_color) {
 		    $("#audio" + tile_number)[0].play();
-			var aud = new Audio('audio/sound2.wav');
-			aud.preload = true;
-			var aud1 = aud.duration;
-			console.log(aud1);
 		    $("#tile" + tile_number).effect("highlight", {color: this_color}, 3300
 			);
 	    }
@@ -229,7 +227,6 @@ $(document).ready(function() { // start doc ready; do not delete this!
 		    		queue.push(new Audio("audio/sound" + dropLocation[i] + fileExtension));
 		    	}
 	    	}
-	   
 	        play_sound_queue(queue);
 	    }
 	    

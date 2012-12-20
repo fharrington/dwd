@@ -1,7 +1,7 @@
 html {
   font-family: century gothic, monotype corsica;
   color: white;
-  background-color: black; }
+  background-color: #151515; }
 
 body {
   padding: 0;
@@ -33,14 +33,158 @@ h3 {
 
 #wrap {
   width: 100%;
-  height: 900px; }
+ 
+}
 
 #page {
   padding: 20px;
   width: 960px;
-  margin: auto;
-  float: left; }
+  margin: 20px auto;
+  background-color: #000000;
+  border: 1px solid #444444;
+  /*background-image: url("/image/bg.jpg") no-repeat; */
+  }
 
+#bgpusher {
+  width: 960px;
+   }
+
+#header {
+  float: left;
+  width: 100%;
+  height: 110px; }
+
+#logo {
+  float: left;
+  width: 259px;
+  height: 83px; }
+  #logo a {
+    color: #03346f; }
+    #logo a:hover {
+      color: #03346f; }
+    #logo a:visited {
+      color: #03346f; }
+
+#title {
+  float: left;
+  margin: 0 30px 0 30px;
+  width: 600px;
+  height: 50px; 
+  }
+  
+ #titleinside{
+  float: left;
+  margin: 0 30px 0 0px;
+  width: 600px;
+  height: 50px; 
+  }
+
+  
+#accountfunctions {
+  float: right;
+  height: 20px;
+  /* width: 150px; */
+  padding: 10px;
+  background-color: #555555;
+  list-style-type: none; }
+  #accountfunctions ul {
+    display: inline;
+    list-style-type: none; }
+  #accountfunctions li {
+    display: inline; }
+  #accountfunctions a {
+    color: white; }
+    #accountfunctions a:hover {
+      color: yellow; }
+    #accountfunctions a:visited {
+      color: #FFFFFF; }
+
+#mainnav {
+  float: left;
+  padding: 10px;
+  background-color: #555555;
+  list-style-type: none;
+  clear: both; }
+  #mainnav ul {
+    list-style-type: none; }
+  #mainnav a {
+    color: white;
+    text-decoration: none; }
+    #mainnav a:hover {
+      color: yellow; }
+    #mainnav a:visited {
+      color: #FFFFFF; }
+
+.active {
+  font-weight: bold; }
+  .active ul {
+    font-weight: bold; }
+    .active ul li {
+      font-weight: bold; }
+      .active ul li a {
+        font-weight: bold; }
+
+#posts {
+  float: left;
+  padding: 20px;
+  margin: 0 30px 30px 30px;
+  width: 400px;
+  background-color: #222222; }
+  #posts ul {
+    list-style-type: none; }
+  #posts a {
+    text-decoration: none;
+    color: purple; }
+    #posts a:visited {
+      color: purple; }
+    #posts a:hover {
+      color: yellow; }
+
+	  
+#myposts {
+  float: left;
+  padding: 20px;
+  margin: 0px 30px 30px 0px;
+  width: 400px;
+  background-color: #333333; }
+  #posts ul {
+    list-style-type: none; }
+  #posts a {
+    text-decoration: none;
+    color: purple; }
+    #posts a:visited {
+      color: purple; }
+    #posts a:hover {
+      color: yellow; }
+	  
+	  
+.solid {
+  opacity: 1.0; }
+
+.postsinside {
+  margin-top: -20px;
+  float: left;
+  clear: both; }
+
+.uploads {
+float: left;
+  padding: 20px;
+  margin: 0px 0px 0px 0px;
+  /* width: 400px; */
+  background-color: #555555; }
+  .uploads ul {
+    list-style-type: none; }
+  .uploads a {
+    text-decoration: none;
+    color: purple; }
+    .uploads a:visited {
+      color: purple; }
+    .uploads a:hover {
+      color: yellow; }
+	.uploads li{
+		background-color: #333333;}
+		
+  
 .content {
   width: 600px;
   margin: 0 30px 0 150px; }
@@ -55,128 +199,7 @@ h3 {
   clear: both; }
 
 .bgpusher {
-  height: 865px; }
-
-.hovered {
-  background-color: #DDDDDD; }
-
-#player {
-  float: left;
-  margin: 10px;
-  border: 1px solid white; }
-
-.tile-drop {
-  float: left;
-  height: 80px;
-  width: 80px;
-  margin: 5px;
-  border: 1px solid grey; }
-
-.tile-drop2 {
-  float: left;
-  height: 80px;
-  width: 80px;
-  margin: 5px;
-  border: 1px solid grey; }
-
-.tile-drop3 {
-  float: left;
-  height: 80px;
-  width: 80px;
-  margin: 5px;
-  border: 1px solid grey; }
-
-.tile-drop4 {
-  float: left;
-  height: 80px;
-  width: 80px;
-  margin: 5px;
-  border: 1px solid grey; }
-
-.tile-drop5 {
-  float: left;
-  height: 80px;
-  width: 80px;
-  margin: 5px;
-  border: 1px solid grey; }
-
-#tile-area {
-  float: left;
-  margin: 10px;
-  width: 462px; }
-
-.tile-sound {
-  float: left;
-  height: 80px;
-  width: 80px;
-  margin: 5px;
-  border: 1px solid grey;
-  background-color: #DE4D3F; }
-
-.tile {
-  float: left;
-  height: 80px;
-  width: 80px;
-  margin: 5px;
-  border: 1px solid grey; }
-
-.red {
-  background-color: red; }
-
-.orange {
-  background-color: orange; }
-
-.yellow {
-  background-color: yellow; }
-
-.brown {
-  background-color: brown; }
-
-.blue {
-  background-color: blue; }
-
-#draggableHelper {
-  float: left;
-  height: 80px;
-  width: 80px;
-  margin: 5px;
-  border: 1px solid grey;
-  background-color: blue; }
-
-.full-circle {
-  width: 100px;
-  height: 100px;
-  background: #FFFFFF;
-  -moz-border-radius: 50px;
-  -webkit-border-radius: 50px;
-  border-radius: 50px;
-  box-shadow: 0px 0px 20px 10px white;
-  transform: scale(0.9);
-  opacity: 0.7; }
-
-
-.tile {
-	border:1px solid white;
-	width:80px;
-	height:80px;
-	margin:5px;
-	float:left;
-	background-color:black;
-}
-
-/* SB: Make the play button look like a button */
-#playbutton {
-	cursor:pointer;
-}
-
-.slot {
-	width:80px;
-	height:80px;
-	border:1px solid white;
-	margin:5px;
-	float:left;
-}
-
-.slotted {
-	background-color:red;
-}
+  height: 600px; }
+  
+.error { 
+	color: red;}

@@ -71,7 +71,7 @@ class index_controller extends base_controller {
 		# Set up view
 		$this->template->content = View::instance('v_index_project4');
 		$this->template->title   = "Project4";
-
+		
 		echo $this->template;
 	}
 	

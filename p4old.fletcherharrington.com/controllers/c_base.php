@@ -52,8 +52,7 @@ class base_controller {
 			"mystream" => '/posts/mystream/',
 			"follow" => '/posts/users/',
 			"add posts" => '/posts/add/',
-			"about" => '/index/about/',
-			"upload" => '/file/upload/'
+			"about" => '/index/about/'
 			);
 		
 		$navigationout = Array(

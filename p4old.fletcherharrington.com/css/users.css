@@ -1,0 +1,182 @@
+html {
+  font-family: century gothic, monotype corsica;
+  color: white;
+  background-color: black; }
+
+body {
+  padding: 0;
+  margin: 0; }
+
+li {
+  padding: 0;
+  margin: 0; }
+
+ul {
+  padding: 0;
+  margin: 0; }
+
+h1 {
+  font: 26px century gothic, monotype corsica, sans-serif;
+  color: white;
+  margin: 0px;
+  padding: 0px; }
+
+h2 {
+  font: 20px century gothic, monotype corsica, sans-serif;
+  color: white;
+  margin: 0px;
+  padding: 0px; }
+
+h3 {
+  font: 20px bold century gothic, monotype corsica, sans-serif;
+  color: white; }
+
+#wrap {
+  width: 100%;
+  height: 900px; }
+
+#page {
+  padding: 20px;
+  width: 960px;
+  margin: auto;
+  float: left; }
+
+.content {
+  width: 600px;
+  margin: 0 30px 0 150px; }
+  .content a {
+    color: yellow; }
+    .content a:visited {
+      color: grey; }
+    .content a:hover {
+      color: white; }
+
+.clear {
+  clear: both; }
+
+.bgpusher {
+  height: 865px; }
+
+.hovered {
+  background-color: #DDDDDD; }
+
+#player {
+  float: left;
+  margin: 10px;
+  border: 1px solid white; }
+
+.tile-drop {
+  float: left;
+  height: 80px;
+  width: 80px;
+  margin: 5px;
+  border: 1px solid grey; }
+
+.tile-drop2 {
+  float: left;
+  height: 80px;
+  width: 80px;
+  margin: 5px;
+  border: 1px solid grey; }
+
+.tile-drop3 {
+  float: left;
+  height: 80px;
+  width: 80px;
+  margin: 5px;
+  border: 1px solid grey; }
+
+.tile-drop4 {
+  float: left;
+  height: 80px;
+  width: 80px;
+  margin: 5px;
+  border: 1px solid grey; }
+
+.tile-drop5 {
+  float: left;
+  height: 80px;
+  width: 80px;
+  margin: 5px;
+  border: 1px solid grey; }
+
+#tile-area {
+  float: left;
+  margin: 10px;
+  width: 462px; }
+
+.tile-sound {
+  float: left;
+  height: 80px;
+  width: 80px;
+  margin: 5px;
+  border: 1px solid grey;
+  background-color: #DE4D3F; }
+
+.tile {
+  float: left;
+  height: 80px;
+  width: 80px;
+  margin: 5px;
+  border: 1px solid grey; }
+
+.red {
+  background-color: red; }
+
+.orange {
+  background-color: orange; }
+
+.yellow {
+  background-color: yellow; }
+
+.brown {
+  background-color: brown; }
+
+.blue {
+  background-color: blue; }
+
+#draggableHelper {
+  float: left;
+  height: 80px;
+  width: 80px;
+  margin: 5px;
+  border: 1px solid grey;
+  background-color: blue; }
+
+.full-circle {
+  width: 100px;
+  height: 100px;
+  background: #FFFFFF;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  box-shadow: 0px 0px 20px 10px white;
+  transform: scale(0.9);
+  opacity: 0.7; }
+
+
+.tile {
+	border:1px solid white;
+	width:80px;
+	height:80px;
+	margin:5px;
+	float:left;
+	background-color:black;
+}
+
+/* SB: Make the play button look like a button */
+#playbutton {
+	cursor:pointer;
+}
+
+.slot {
+	width:80px;
+	height:80px;
+	border:1px solid white;
+	margin:5px;
+	float:left;
+}
+
+.slotted {
+	background-color:red;
+}

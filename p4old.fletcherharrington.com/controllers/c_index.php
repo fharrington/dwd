@@ -16,7 +16,7 @@ class index_controller extends base_controller {
 			$this->template->content = View::instance('v_index_index');
 			
 		# Now set the <title> tag
-			$this->template->title = "SoundLoft";
+			$this->template->title = "project4";
 	
 		# If this view needs any JS or CSS files, add their paths to this array so they will get loaded in the head
 			$client_files = Array(
@@ -51,7 +51,7 @@ class index_controller extends base_controller {
 		$q = "SELECT * 
 			FROM posts
 			JOIN users USING (user_id)";
-			
+		
 		# Run our query, grabbing all the posts and joining in the users	
 		$posts = DB::instance(DB_NAME)->select_rows($q);
 		
@@ -66,11 +66,11 @@ class index_controller extends base_controller {
 	
 	}
 		
-	public function project3() {
+	public function project4() {
 		
 		# Set up view
-		$this->template->content = View::instance('v_index_project3');
-		$this->template->title   = "Project3";
+		$this->template->content = View::instance('v_index_project4');
+		$this->template->title   = "Project4";
 
 		echo $this->template;
 	}
