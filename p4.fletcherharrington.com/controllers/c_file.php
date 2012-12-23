@@ -12,119 +12,52 @@ class file_controller extends base_controller {
 	}
 	
 	
-	public function mystream($streamerror = NULL) {
-	
-	# Set up view
-	$this->template->content = View::instance('v_posts_mystream');
-	$this->template->title   = "Posts";
-	
-	#Posts of users this user is following
-	$q = "SELECT *
-		FROM users_users
-		WHERE user_id = " .$this->user->user_id;
-	
-	#Execute our query, storing the results in a variable $connections
-	$connections = DB::instance(DB_NAME)->select_rows($q);
-	
-	if ($connections == NULL) {
-	$streamerror = 1;
-	Router::redirect('/users/profile/streamerror');
-	} else {
-	
-	#In order to query for the posts we need, we're going to need a string of user id's, separated by commas
-	#To create this, loop through our connections array
-	$connections_string = "";
-	foreach($connections as $connection) {
-		$connections_string .= $connection['user_id_followed'].",";
-	}
-	
-	#remove the final comma
-	$connections_string = substr($connections_string, 0, -1);
-	
-	# Build our query to grab the posts
-	$q = "SELECT * 
-		FROM posts
-		JOIN users USING (user_id)
-		WHERE posts.user_id IN (".$connections_string.")"; 
-	
-	# Run our query, grabbing all the posts and joining in the users	
-	$posts = DB::instance(DB_NAME)->select_rows($q);
-	
-	#reverse order (newest first)
-	$posts = array_reverse($posts);
-	
-	}
-	
-	# Pass data to the view
-	
-	$this->template->content->streamerror = $streamerror;
-	
-	$this->template->content->posts = $posts;
-		
-	# Render view
-	echo $this->template;
-	
-	}
-
-	
-	public function users() {
-	
-	#set up the view
-	$this->template->content = View::instance("v_posts_users");
-	$this->template->title = "Users";
-	
-	$this_userid = $this->user->user_id;
-	
-	#Build our query to get all the users except logged in
-	$q = "SELECT *
-		FROM users";
-		//WHERE user_id <> " .$this_userid;
-	
-	#Execute the query to get all teh users. Store result array in var $users
-	
-	$users = DB::instance(DB_NAME)->select_rows($q);
-	
-	#Build query to determine what connections user already has (following who)
-	$q = "SELECT *
-		FROM users_users
-		WHERE user_id = ".$this->user->user_id;
-		
-	#execute query with select_array method: returns results in an array and uses the #users_id_followed field as the index
-	#will come in hand when settin up this view
-	#Store results in variable $connections
-	
-	$connections = DB::instance(DB_NAME)->select_array($q, 'user_id_followed');
-	
-	#Pass data (users and connections) to the view
-	$this->template->content->users = 	   	$users;
-	$this->template->content->connections = $connections;
-	
-	#Render the view
-	echo $this->template;
-	}
-
 	
 	public function upload() {
 	
 		# Setup view
 		$this->template->content = View::instance('v_file_upload');
 		$this->template->title   = "Add a new audio file";
+		
+		# Get all files in upload dir
+		
+		# get list of all files so there are no duplicates 
+		$s = "SELECT file
+			FROM audio";
+			
+		$allFiles = DB::instance(DB_NAME)->select_array($s, 'file');
+		
+	
+		$this->template->content->allFiles = $allFiles;
 			
 		# Render template
 		echo $this->template;
-	
 	}
 	
 	public function p_upload() {
 			
-		# Associate this post with this user
+		# Associate this file with this user
 		$_POST['user_id']  = $this->user->user_id;
 
-		# Unix timestamp of when this post was created / modified
+		# Unix timestamp of when this file was added
 		$_POST['created']  = Time::now();
 		$_POST['modified'] = Time::now();
 		
-		If (!empty($_POST)) {
+		# get list of all files so there are no duplicates 
+		
+		# get list of all files so there are no duplicates 
+		$s = "SELECT file
+			FROM audio";
+
+		$allFiles = DB::instance(DB_NAME)->select_array($s, 'file');
+		
+		$dup = "";
+		foreach ($allFiles as $key => $files) {
+			if ($_FILES["file"]["name"] == $files) { $dup = "true"; }
+			else { break; } 
+			}
+		
+		If (!empty($_POST) && ($dup != "true")) {
 		
 		$_POST['file'] = $_FILES["file"]["name"];
 
@@ -139,8 +72,6 @@ class file_controller extends base_controller {
 		}
 	}
 	
-	
-	
-	
+
 	
 }

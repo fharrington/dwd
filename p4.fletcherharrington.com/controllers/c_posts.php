@@ -131,6 +131,7 @@ class posts_controller extends base_controller {
 			FROM audio
 			WHERE user_id = ".$this->user->user_id;
 			
+			
 		#execute query with select_array method: returns results in an array and uses the #user_id field as the index
 		#Store results in variable $file
 		
