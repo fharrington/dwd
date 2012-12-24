@@ -8,7 +8,7 @@ class base_controller {
 	public $email_template;
 	public $inout;
 	public $logout;
-	public $allFiles;
+	#public $allFiles;
 
 	/*-------------------------------------------------------------------------------------------------
 	

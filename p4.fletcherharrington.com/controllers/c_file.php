@@ -57,6 +57,7 @@ class file_controller extends base_controller {
 			else { break; } 
 			}
 		
+		
 		If (!empty($_POST) && ($dup != "true")) {
 		
 		$_POST['file'] = $_FILES["file"]["name"];
